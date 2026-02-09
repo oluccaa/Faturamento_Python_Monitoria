@@ -1,0 +1,21 @@
+2026-02-09 08:59:01 | INFO     | [__init__] 🚀 DataExtractorOmie inicializado com sucesso.
+2026-02-09 08:59:10 | INFO     | [__init__] 🚀 DataExtractorOmie inicializado com sucesso.
+2026-02-09 08:59:30 | INFO     | [__init__] 🚀 DataExtractorOmie inicializado com sucesso.
+2026-02-09 08:59:34 | INFO     | [__init__] 🚀 DataExtractorOmie inicializado com sucesso.
+2026-02-09 09:01:52 | INFO     | [__init__] 🚀 DataExtractorOmie (Versão Período) inicializado.
+2026-02-09 09:02:12 | INFO     | [executar_extracao] 📡 Buscando pedidos de 01/01/2025 até 01/01/2025...
+2026-02-09 09:02:16 | ERROR    | [executar_extracao] 💥 Falha na extração (Pág 1): 500 Server Error: Internal Server Error for url: https://app.omie.com.br/api/v1/produtos/pedido/
+2026-02-09 09:05:15 | INFO     | [run_extraction] 🚀 Iniciando Extração DDD: 01/01/2025 até 31/01/2025
+2026-02-09 09:05:22 | INFO     | [run_extraction] 📄 Página 1/12 ok. Total parcial: 100
+2026-02-09 09:05:26 | INFO     | [run_extraction] 📄 Página 2/12 ok. Total parcial: 200
+2026-02-09 09:05:31 | INFO     | [run_extraction] 📄 Página 3/12 ok. Total parcial: 300
+2026-02-09 09:05:37 | INFO     | [run_extraction] 📄 Página 4/12 ok. Total parcial: 392
+2026-02-09 09:05:42 | INFO     | [run_extraction] 📄 Página 5/12 ok. Total parcial: 488
+2026-02-09 09:05:47 | INFO     | [run_extraction] 📄 Página 6/12 ok. Total parcial: 579
+2026-02-09 09:05:52 | INFO     | [run_extraction] 📄 Página 7/12 ok. Total parcial: 664
+2026-02-09 09:05:57 | INFO     | [run_extraction] 📄 Página 8/12 ok. Total parcial: 752
+2026-02-09 09:06:02 | INFO     | [run_extraction] 📄 Página 9/12 ok. Total parcial: 846
+2026-02-09 09:06:07 | INFO     | [run_extraction] 📄 Página 10/12 ok. Total parcial: 932
+2026-02-09 09:06:12 | INFO     | [run_extraction] 📄 Página 11/12 ok. Total parcial: 994
+2026-02-09 09:06:14 | INFO     | [run_extraction] 📄 Página 12/12 ok. Total parcial: 994
+2026-02-09 09:06:15 | INFO     | [_save] 💾 Sucesso! 994 pedidos salvos em C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_01_2025.json
