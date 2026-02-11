@@ -2,86 +2,96 @@ import time
 from datetime import datetime
 from src.config import CONFIG
 from src.infrastructure.omie_client import OmieClient
+from src.infrastructure.custom_logging import logger
 from src.infrastructure.repositories import JsonRepository
 from src.domain.services import BillingDomainService
-from src.infrastructure.logging import logger
 
 class BillingApplication:
     def __init__(self):
+        # 1. Camada de Infraestrutura
         self.client = OmieClient()
         self.repo = JsonRepository()
-        self.service = BillingDomainService()
         
-        # Carrega filtros na memória
+        # 2. Carregamento de Dados Auxiliares (Cache Local)
         self.manifestados = self.repo.load_filter_set("manifestados.json")
-        self.processados = self.repo.load_filter_set("processados.json")
+        self.processados_antigos = self.repo.load_filter_set("processados.json")
         
-        # Filtro unificado (Blocklist)
-        self.filtro_ids = self.manifestados.union(self.processados)
-        logger.info(f"🛡️ Filtros carregados: {len(self.filtro_ids)} IDs ignorados.")
-
-    def run(self):
-        data_inicio = CONFIG.DATA_INICIO or datetime.now().strftime("%d/%m/%Y")
-        data_fim = CONFIG.DATA_FIM or datetime.now().strftime("%d/%m/%Y")
+        # Carrega mapas estáticos (Vendedores e Categorias)
+        vendedores_data = self.repo.load_dict("vendedores.json")
         
-        logger.info(f"🚀 Iniciando processamento: {data_inicio} até {data_fim}")
+        # MUDANÇA AQUI: Carrega o arquivo local de categorias em vez da API
+        categorias_data = self.repo.load_dict("categorias.json")
+        
+        # 3. Camada de Domínio (Injeção de Dependência)
+        self.domain = BillingDomainService(
+            vendedores_map=vendedores_data,
+            categorias_map=categorias_data
+        )
+        
+        # Filtro Unificado
+        self.filtro_bloqueio = self.manifestados.union(self.processados_antigos)
+        logger.info(f"🛡️ Filtros carregados: {len(self.filtro_bloqueio)} IDs ignorados.")
 
-        refined_orders = {}
-        processed_ids_buffer = []
-        page = 1
-        total_pages = 1
-
+    def run_extraction(self, data_inicio: str, data_fim: str):
+        # ... (O restante do método permanece idêntico ao anterior)
+        # O fluxo de extração não muda, apenas a fonte das categorias.
+        start_time = time.time()
+        logger.info(f"🚀 Iniciando Extração: {data_inicio} até {data_fim}")
+        
+        all_cleaned_orders = {}
+        ids_processados_agora = []
+        page, total_pages, skipped_count = 1, 1, 0
+        
         while page <= total_pages:
+            param = {
+                "pagina": page,
+                "registros_por_pagina": 100,
+                "filtrar_por_data_de": data_inicio,
+                "filtrar_por_data_ate": data_fim,
+                "apenas_resumo": "N"
+            }
+
             try:
-                # 1. Conexão e Download (JSON Bruto em Memória)
-                raw_response = self.client.listar_pedidos(page, data_inicio, data_fim)
-                
-                if page == 1:
-                    total_pages = raw_response.get("total_de_paginas", 1)
+                data = self.client.post("ListarPedidos", param)
+                total_pages = data.get("total_de_paginas", 1)
+                orders = data.get("pedido_venda_produto", [])
+                if isinstance(orders, dict): orders = [orders]
 
-                # Normaliza lista de pedidos
-                orders_list = raw_response.get("pedido_venda_produto", [])
-                if isinstance(orders_list, dict): orders_list = [orders_list]
+                for order in orders:
+                    cabecalho = order.get("cabecalho", {})
+                    cod_pedido = str(cabecalho.get("codigo_pedido", ""))
+                    num_pedido = str(cabecalho.get("numero_pedido", "S_NUM"))
 
-                for raw_order in orders_list:
-                    # 2. Extração de Identificadores
-                    cabecalho = raw_order.get("cabecalho", {})
+                    if cod_pedido in self.filtro_bloqueio:
+                        skipped_count += 1
+                        continue
                     
-                    # ID INTERNO (Ex: 10120853337) -> Usado para COMPARAÇÃO/FILTRO
-                    codigo_pedido = str(cabecalho.get("codigo_pedido"))
-                    
-                    # ID VISUAL (Ex: 13090) -> Usado para CHAVE do JSON
-                    numero_pedido = str(cabecalho.get("numero_pedido"))
+                    # O domain service agora usará o mapa do arquivo categorias.json
+                    dados_limpos = self.domain.clean_order_data(order)
+                    all_cleaned_orders[num_pedido] = dados_limpos
+                    ids_processados_agora.append(cod_pedido)
 
-                    # 3. Comparação com Manifestados e Processados
-                    if codigo_pedido in self.filtro_ids:
-                        continue # Pula se já existir
-
-                    # 4. Geração do JSON Refinado
-                    refined_data = self.service.clean_order_data(raw_order)
-                    
-                    # Armazena no dicionário final usando numero_pedido
-                    refined_orders[numero_pedido] = refined_data
-                    
-                    # Guarda ID interno para atualizar histórico
-                    processed_ids_buffer.append(codigo_pedido)
-
-                logger.info(f"📄 Página {page}/{total_pages} processada.")
+                logger.info(f"📄 Pág {page}/{total_pages} | Novos: {len(all_cleaned_orders)}")
                 page += 1
-                time.sleep(0.2) # Evita bloqueio da API
+                time.sleep(0.2)
 
             except Exception as e:
-                logger.error(f"⚠️ Falha crítica na página {page}: {e}")
-                break
+                logger.warning(f"⚠️ Erro na página {page}: {e}. Tentando novamente...")
+                time.sleep(2)
+                continue
 
-        # 5. Salva Resultados
-        if refined_orders:
-            self.repo.save_refined_json(refined_orders, data_inicio)
-            self.repo.update_processed_list("processados.json", processed_ids_buffer)
-            logger.info(f"🏁 Processo finalizado. {len(refined_orders)} novos pedidos refinados.")
-        else:
-            logger.warning("⚠️ Nenhum novo pedido encontrado para processar.")
+        # Salva outputs
+        if all_cleaned_orders:
+            self.repo.save_refined_json(all_cleaned_orders, data_inicio)
+        
+        if ids_processados_agora:
+            self.repo.update_processed_list("processados.json", ids_processados_agora)
+
+        duration = time.time() - start_time
+        logger.info(f"🏁 Finalizado em {duration:.2f}s. Ignorados: {skipped_count}")
 
 if __name__ == "__main__":
     app = BillingApplication()
-    app.run()
+    dt_inicio = CONFIG.DATA_INICIO or datetime.now().strftime("%d/%m/%Y")
+    dt_fim = CONFIG.DATA_FIM or datetime.now().strftime("%d/%m/%Y")
+    app.run_extraction(dt_inicio, dt_fim)

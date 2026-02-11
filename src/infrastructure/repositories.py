@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
-from src.infrastructure.logging import logger
+from src.infrastructure.custom_logging import logger # Atenção ao import do log
+from src.config import CONFIG
 
 class JsonRepository:
     def __init__(self, base_dir: str = "."):
@@ -20,6 +21,22 @@ class JsonRepository:
             logger.error(f"❌ Erro ao ler {filename}: {e}")
             return set()
 
+    def load_dict(self, filename: str) -> dict:
+        """
+        Carrega JSON como dicionário. 
+        Essencial para carregar vendedores.json e categorias.json.
+        """
+        path = self.base_dir / filename
+        if not path.exists():
+            logger.warning(f"⚠️ Arquivo {filename} não encontrado. Retornando vazio.")
+            return {}
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            logger.error(f"❌ Erro ao ler {filename}: {e}")
+            return {}
+
     def update_processed_list(self, filename: str, new_ids: list):
         """Atualiza o arquivo de processados adicionando os novos IDs"""
         path = self.base_dir / filename
@@ -36,7 +53,7 @@ class JsonRepository:
 
     def save_refined_json(self, data: dict, date_ref: str):
         filename = f"faturamento_{date_ref.replace('/', '_')}.json"
-        path = CONFIG.OUTPUT_DIR / filename # Usa o output do config
+        path = CONFIG.OUTPUT_DIR / filename
         try:
             path.parent.mkdir(parents=True, exist_ok=True)
             with open(path, 'w', encoding='utf-8') as f:

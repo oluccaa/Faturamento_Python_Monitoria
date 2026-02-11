@@ -5,7 +5,7 @@ from datetime import datetime
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from src.config import CONFIG
-from src.infrastructure.logging import logger
+from src.infrastructure.custom_logging import logger
 
 # Caminhos dos arquivos auxiliares
 VENDEDORES_FILE = CONFIG.BASE_DIR / "vendedores.json"

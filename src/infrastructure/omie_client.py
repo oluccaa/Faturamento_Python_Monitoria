@@ -1,6 +1,6 @@
 import requests
 from src.config import CONFIG
-from src.infrastructure.logging import logger
+from src.infrastructure.custom_logging import logger
 
 class OmieClient:
     def __init__(self):
