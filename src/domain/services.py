@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import Dict, Any, Union
 from src.domain.entities import (
     PedidoRefinado, Cabecalho, InfoCadastro, InformacoesAdicionais, 
     ListaParcelas, Parcela, Observacoes, TotalPedido
@@ -12,13 +12,24 @@ class BillingDomainService:
         self.vendedores_map = vendedores_map or {}
         self.categorias_map = categorias_map or {}
 
+    def _get_safe_dict(self, source: dict, key: str) -> dict:
+        """
+        Helper para extrair dicionários da API Omie de forma segura.
+        Se a API retornar uma lista vazia [] (comum em campos vazios), 
+        retorna um dicionário vazio {} para evitar erro de .get().
+        """
+        value = source.get(key, {})
+        if isinstance(value, list):
+            return {}
+        return value
+
     def clean_order_data(self, raw_order: dict) -> dict:
         """
         Transforma o JSON bruto da Omie no formato refinado específico solicitado.
         """
         
-        # 1. Cabecalho
-        raw_cab = raw_order.get("cabecalho", {})
+        # 1. Cabecalho (Usa o helper seguro)
+        raw_cab = self._get_safe_dict(raw_order, "cabecalho")
         cabecalho = Cabecalho(
             bloqueado=str(raw_cab.get("bloqueado", "N")),
             codigo_cenario_impostos=str(raw_cab.get("codigo_cenario_impostos", "")),
@@ -34,7 +45,7 @@ class BillingDomainService:
         )
 
         # 2. InfoCadastro
-        raw_info = raw_order.get("infoCadastro", {})
+        raw_info = self._get_safe_dict(raw_order, "infoCadastro")
         info = InfoCadastro(
             autorizado=str(raw_info.get("autorizado", "N")),
             cImpAPI=str(raw_info.get("cImpAPI", "N")),
@@ -54,8 +65,8 @@ class BillingDomainService:
             uInc=str(raw_info.get("uInc", ""))
         )
 
-        # 3. InformacoesAdicionais (Com Enriquecimento)
-        raw_adic = raw_order.get("informacoes_adicionais", {})
+        # 3. InformacoesAdicionais
+        raw_adic = self._get_safe_dict(raw_order, "informacoes_adicionais")
         
         # Tradução de Vendedor
         cod_vend = str(raw_adic.get("codVend", ""))
@@ -70,9 +81,9 @@ class BillingDomainService:
         adicionais = InformacoesAdicionais(
             codProj=raw_adic.get("codProj"),
             codVend=raw_adic.get("codVend"),
-            vendedor_nome=nome_vendedor,       # Campo Adicionado
+            vendedor_nome=nome_vendedor,
             codigo_categoria=cod_cat,
-            categoria_nome=nome_categoria,     # Campo Adicionado
+            categoria_nome=nome_categoria,
             codigo_conta_corrente=raw_adic.get("codigo_conta_corrente"),
             consumidor_final=str(raw_adic.get("consumidor_final", "N")),
             enviar_email=str(raw_adic.get("enviar_email", "N")),
@@ -81,34 +92,34 @@ class BillingDomainService:
             utilizar_emails=str(raw_adic.get("utilizar_emails", ""))
         )
 
-        # 4. Lista de Parcelas
-        raw_parcelas_container = raw_order.get("lista_parcelas", {})
+        # 4. Lista de Parcelas (O ponto mais crítico do erro)
+        raw_parcelas_container = self._get_safe_dict(raw_order, "lista_parcelas")
         raw_parcelas_list = raw_parcelas_container.get("parcela", [])
         
-        # Tratamento para quando a API retorna um dict único ao invés de lista
         if isinstance(raw_parcelas_list, dict):
             raw_parcelas_list = [raw_parcelas_list]
             
         parcelas_refinadas = []
         for p in raw_parcelas_list:
-            parcelas_refinadas.append(Parcela(
-                data_vencimento=str(p.get("data_vencimento", "")),
-                numero_parcela=p.get("numero_parcela"),
-                percentual=p.get("percentual", 0),
-                quantidade_dias=p.get("quantidade_dias", 0),
-                valor=p.get("valor", 0.0)
-            ))
+            if isinstance(p, dict): # Proteção extra dentro da lista
+                parcelas_refinadas.append(Parcela(
+                    data_vencimento=str(p.get("data_vencimento", "")),
+                    numero_parcela=p.get("numero_parcela"),
+                    percentual=p.get("percentual", 0),
+                    quantidade_dias=p.get("quantidade_dias", 0),
+                    valor=p.get("valor", 0.0)
+                ))
             
         lista_parcelas = ListaParcelas(parcela=parcelas_refinadas)
 
         # 5. Observacoes
-        raw_obs = raw_order.get("observacoes", {})
+        raw_obs = self._get_safe_dict(raw_order, "observacoes")
         observacoes = Observacoes(
             obs_venda=str(raw_obs.get("obs_venda", ""))
         )
 
         # 6. Total Pedido
-        raw_total = raw_order.get("total_pedido", {})
+        raw_total = self._get_safe_dict(raw_order, "total_pedido")
         total_pedido = TotalPedido(
             valor_total_pedido=raw_total.get("valor_total_pedido", 0.0)
         )
