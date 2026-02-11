@@ -4,26 +4,30 @@ from src.infrastructure.logging import logger
 
 class OmieClient:
     def __init__(self):
-        self.url = "https://app.omie.com.br/api/v1/produtos/pedido/"
+        self.api_key = CONFIG.OMIE_APP_KEY
+        self.api_secret = CONFIG.OMIE_APP_SECRET
+        self.base_url = "https://app.omie.com.br/api/v1/produtos/pedido/"
+        self._headers = {'Content-Type': 'application/json'}
 
-    def post(self, call: str, param: dict) -> dict:
-        """Centraliza as chamadas POST para a Omie com tratamento de erro."""
+    def listar_pedidos(self, pagina: int, data_de: str, data_ate: str):
         payload = {
-            "call": call,
-            "app_key": CONFIG.OMIE_APP_KEY,
-            "app_secret": CONFIG.OMIE_APP_SECRET,
-            "param": [param] # A Omie espera o parâmetro dentro de uma lista
+            "call": "ListarPedidos",
+            "app_key": self.api_key,
+            "app_secret": self.api_secret,
+            "param": [{
+                "pagina": pagina,
+                "registros_por_pagina": 100,
+                "apenas_importado_api": "N",
+                "filtrar_por_data_de": data_de,
+                "filtrar_por_data_ate": data_ate,
+                "apenas_resumo": "N" # Traz o JSON completo como você pediu
+            }]
         }
         
         try:
-            response = requests.post(self.url, json=payload, timeout=CONFIG.TIMEOUT_REQUEST)
-            
-            # Se der erro 500, logamos o JSON de resposta para depuração real
-            if response.status_code == 500:
-                logger.error(f"❌ Erro 500 na Omie: {response.text}")
-                
+            response = requests.post(self.base_url, json=payload, headers=self._headers, timeout=30)
             response.raise_for_status()
             return response.json()
         except Exception as e:
-            logger.error(f"💥 Falha na comunicação com a API: {e}")
+            logger.error(f"❌ Erro na API Omie: {e}")
             raise
