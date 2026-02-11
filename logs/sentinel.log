@@ -19,3 +19,378 @@
 2026-02-09 09:06:12 | INFO     | [run_extraction] 📄 Página 11/12 ok. Total parcial: 994
 2026-02-09 09:06:14 | INFO     | [run_extraction] 📄 Página 12/12 ok. Total parcial: 994
 2026-02-09 09:06:15 | INFO     | [_save] 💾 Sucesso! 994 pedidos salvos em C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_01_2025.json
+2026-02-09 09:23:09 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (09/02/2026).
+2026-02-09 09:23:09 | INFO     | [<module>] ⚙️ Configuração de Período: 01/01/2025 até 09/02/2026
+2026-02-09 09:23:09 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/01/2025 até 09/02/2026
+2026-02-09 09:23:16 | INFO     | [run_extraction] 📄 Pág 1/131 | ⏱️ 7.26s | 📦 Acumulado: 100
+2026-02-09 09:23:26 | INFO     | [run_extraction] 📄 Pág 2/131 | ⏱️ 9.78s | 📦 Acumulado: 200
+2026-02-09 09:23:34 | INFO     | [run_extraction] 📄 Pág 3/131 | ⏱️ 7.45s | 📦 Acumulado: 300
+2026-02-09 09:23:43 | INFO     | [run_extraction] 📄 Pág 4/131 | ⏱️ 8.98s | 📦 Acumulado: 400
+2026-02-09 09:23:51 | INFO     | [run_extraction] 📄 Pág 5/131 | ⏱️ 7.82s | 📦 Acumulado: 500
+2026-02-09 09:24:00 | INFO     | [run_extraction] 📄 Pág 6/131 | ⏱️ 8.96s | 📦 Acumulado: 600
+2026-02-09 09:24:07 | INFO     | [run_extraction] 📄 Pág 7/131 | ⏱️ 6.85s | 📦 Acumulado: 700
+2026-02-09 09:24:12 | INFO     | [run_extraction] 📄 Pág 8/131 | ⏱️ 4.69s | 📦 Acumulado: 800
+2026-02-09 09:24:18 | INFO     | [run_extraction] 📄 Pág 9/131 | ⏱️ 5.25s | 📦 Acumulado: 900
+2026-02-09 09:24:23 | INFO     | [run_extraction] 📄 Pág 10/131 | ⏱️ 5.11s | 📦 Acumulado: 988
+2026-02-09 09:24:28 | INFO     | [run_extraction] 📄 Pág 11/131 | ⏱️ 4.84s | 📦 Acumulado: 1076
+2026-02-09 09:24:33 | INFO     | [run_extraction] 📄 Pág 12/131 | ⏱️ 4.71s | 📦 Acumulado: 1155
+2026-02-09 09:24:38 | INFO     | [run_extraction] 📄 Pág 13/131 | ⏱️ 4.69s | 📦 Acumulado: 1241
+2026-02-09 09:24:44 | INFO     | [run_extraction] 📄 Pág 14/131 | ⏱️ 5.71s | 📦 Acumulado: 1327
+2026-02-09 09:24:49 | INFO     | [run_extraction] 📄 Pág 15/131 | ⏱️ 5.35s | 📦 Acumulado: 1420
+2026-02-09 09:24:54 | INFO     | [run_extraction] 📄 Pág 16/131 | ⏱️ 5.05s | 📦 Acumulado: 1500
+2026-02-09 09:24:59 | INFO     | [run_extraction] 📄 Pág 17/131 | ⏱️ 4.73s | 📦 Acumulado: 1565
+2026-02-09 09:25:04 | INFO     | [run_extraction] 📄 Pág 18/131 | ⏱️ 4.72s | 📦 Acumulado: 1646
+2026-02-09 09:25:09 | INFO     | [run_extraction] 📄 Pág 19/131 | ⏱️ 4.83s | 📦 Acumulado: 1734
+2026-02-09 09:25:15 | INFO     | [run_extraction] 📄 Pág 20/131 | ⏱️ 5.14s | 📦 Acumulado: 1814
+2026-02-09 09:25:20 | INFO     | [run_extraction] 📄 Pág 21/131 | ⏱️ 4.90s | 📦 Acumulado: 1897
+2026-02-09 09:25:25 | INFO     | [run_extraction] 📄 Pág 22/131 | ⏱️ 5.03s | 📦 Acumulado: 1972
+2026-02-09 09:25:32 | INFO     | [run_extraction] 📄 Pág 23/131 | ⏱️ 6.76s | 📦 Acumulado: 2047
+2026-02-09 09:25:38 | INFO     | [run_extraction] 📄 Pág 24/131 | ⏱️ 5.59s | 📦 Acumulado: 2126
+2026-02-09 09:25:43 | INFO     | [run_extraction] 📄 Pág 25/131 | ⏱️ 4.88s | 📦 Acumulado: 2201
+2026-02-09 09:25:48 | INFO     | [run_extraction] 📄 Pág 26/131 | ⏱️ 4.79s | 📦 Acumulado: 2274
+2026-02-09 09:25:53 | INFO     | [run_extraction] 📄 Pág 27/131 | ⏱️ 4.70s | 📦 Acumulado: 2360
+2026-02-09 09:25:58 | INFO     | [run_extraction] 📄 Pág 28/131 | ⏱️ 4.88s | 📦 Acumulado: 2446
+2026-02-09 09:26:03 | INFO     | [run_extraction] 📄 Pág 29/131 | ⏱️ 5.47s | 📦 Acumulado: 2525
+2026-02-09 09:26:09 | INFO     | [run_extraction] 📄 Pág 30/131 | ⏱️ 4.95s | 📦 Acumulado: 2599
+2026-02-09 09:26:14 | INFO     | [run_extraction] 📄 Pág 31/131 | ⏱️ 5.18s | 📦 Acumulado: 2676
+2026-02-09 09:26:19 | INFO     | [run_extraction] 📄 Pág 32/131 | ⏱️ 5.19s | 📦 Acumulado: 2746
+2026-02-09 09:26:26 | INFO     | [run_extraction] 📄 Pág 33/131 | ⏱️ 6.83s | 📦 Acumulado: 2795
+2026-02-09 09:26:33 | INFO     | [run_extraction] 📄 Pág 34/131 | ⏱️ 6.81s | 📦 Acumulado: 2885
+2026-02-09 09:26:39 | INFO     | [run_extraction] 📄 Pág 35/131 | ⏱️ 5.40s | 📦 Acumulado: 2973
+2026-02-09 09:26:44 | INFO     | [run_extraction] 📄 Pág 36/131 | ⏱️ 4.74s | 📦 Acumulado: 3059
+2026-02-09 09:26:50 | INFO     | [run_extraction] 📄 Pág 37/131 | ⏱️ 5.39s | 📦 Acumulado: 3143
+2026-02-09 09:26:55 | INFO     | [run_extraction] 📄 Pág 38/131 | ⏱️ 4.76s | 📦 Acumulado: 3228
+2026-02-09 09:27:02 | INFO     | [run_extraction] 📄 Pág 39/131 | ⏱️ 6.84s | 📦 Acumulado: 3297
+2026-02-09 09:27:08 | INFO     | [run_extraction] 📄 Pág 40/131 | ⏱️ 5.76s | 📦 Acumulado: 3371
+2026-02-09 09:27:13 | INFO     | [run_extraction] 📄 Pág 41/131 | ⏱️ 5.08s | 📦 Acumulado: 3456
+2026-02-09 09:27:18 | INFO     | [run_extraction] 📄 Pág 42/131 | ⏱️ 5.07s | 📦 Acumulado: 3547
+2026-02-09 09:27:24 | INFO     | [run_extraction] 📄 Pág 43/131 | ⏱️ 5.65s | 📦 Acumulado: 3638
+2026-02-09 09:27:31 | INFO     | [run_extraction] 📄 Pág 44/131 | ⏱️ 6.93s | 📦 Acumulado: 3715
+2026-02-09 09:27:36 | INFO     | [run_extraction] 📄 Pág 45/131 | ⏱️ 5.07s | 📦 Acumulado: 3798
+2026-02-09 09:27:43 | INFO     | [run_extraction] 📄 Pág 46/131 | ⏱️ 6.97s | 📦 Acumulado: 3862
+2026-02-09 09:27:48 | INFO     | [run_extraction] 📄 Pág 47/131 | ⏱️ 4.77s | 📦 Acumulado: 3961
+2026-02-09 09:27:54 | INFO     | [run_extraction] 📄 Pág 48/131 | ⏱️ 5.13s | 📦 Acumulado: 4053
+2026-02-09 09:28:01 | INFO     | [run_extraction] 📄 Pág 49/131 | ⏱️ 6.81s | 📦 Acumulado: 4144
+2026-02-09 09:28:06 | INFO     | [run_extraction] 📄 Pág 50/131 | ⏱️ 5.02s | 📦 Acumulado: 4232
+2026-02-09 09:28:11 | INFO     | [run_extraction] 📄 Pág 51/131 | ⏱️ 4.70s | 📦 Acumulado: 4319
+2026-02-09 09:28:18 | INFO     | [run_extraction] 📄 Pág 52/131 | ⏱️ 6.77s | 📦 Acumulado: 4404
+2026-02-09 09:28:24 | INFO     | [run_extraction] 📄 Pág 53/131 | ⏱️ 5.54s | 📦 Acumulado: 4488
+2026-02-09 09:28:29 | INFO     | [run_extraction] 📄 Pág 54/131 | ⏱️ 5.01s | 📦 Acumulado: 4550
+2026-02-09 09:28:34 | INFO     | [run_extraction] 📄 Pág 55/131 | ⏱️ 4.77s | 📦 Acumulado: 4644
+2026-02-09 09:28:39 | INFO     | [run_extraction] 📄 Pág 56/131 | ⏱️ 4.87s | 📦 Acumulado: 4736
+2026-02-09 09:28:44 | INFO     | [run_extraction] 📄 Pág 57/131 | ⏱️ 4.74s | 📦 Acumulado: 4815
+2026-02-09 09:28:49 | INFO     | [run_extraction] 📄 Pág 58/131 | ⏱️ 5.15s | 📦 Acumulado: 4909
+2026-02-09 09:28:54 | INFO     | [run_extraction] 📄 Pág 59/131 | ⏱️ 4.81s | 📦 Acumulado: 4989
+2026-02-09 09:29:10 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (09/02/2026).
+2026-02-09 09:29:10 | INFO     | [<module>] ⚙️ Configuração de Período: 01/01/2025 até 09/02/2026
+2026-02-09 09:29:10 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/01/2025 até 09/02/2026
+2026-02-09 09:29:18 | INFO     | [run_extraction] 📄 Pág 1/131 | ⏱️ 7.30s | 📦 Acumulado: 100
+2026-02-09 09:29:27 | INFO     | [run_extraction] 📄 Pág 2/131 | ⏱️ 9.32s | 📦 Acumulado: 200
+2026-02-09 09:29:36 | INFO     | [run_extraction] 📄 Pág 3/131 | ⏱️ 8.92s | 📦 Acumulado: 300
+2026-02-09 09:29:45 | INFO     | [run_extraction] 📄 Pág 4/131 | ⏱️ 8.93s | 📦 Acumulado: 400
+2026-02-09 09:29:56 | INFO     | [run_extraction] 📄 Pág 5/131 | ⏱️ 9.96s | 📦 Acumulado: 500
+2026-02-09 09:30:15 | INFO     | [run_extraction] 📄 Pág 6/131 | ⏱️ 18.81s | 📦 Acumulado: 600
+2026-02-09 09:30:27 | INFO     | [run_extraction] 📄 Pág 7/131 | ⏱️ 12.59s | 📦 Acumulado: 700
+2026-02-09 09:30:32 | INFO     | [run_extraction] 📄 Pág 8/131 | ⏱️ 4.73s | 📦 Acumulado: 800
+2026-02-09 09:30:38 | INFO     | [run_extraction] 📄 Pág 9/131 | ⏱️ 5.75s | 📦 Acumulado: 900
+2026-02-09 09:30:44 | INFO     | [run_extraction] 📄 Pág 10/131 | ⏱️ 5.66s | 📦 Acumulado: 988
+2026-02-09 09:30:49 | INFO     | [run_extraction] 📄 Pág 11/131 | ⏱️ 4.93s | 📦 Acumulado: 1076
+2026-02-09 09:30:54 | INFO     | [run_extraction] 📄 Pág 12/131 | ⏱️ 4.80s | 📦 Acumulado: 1155
+2026-02-09 09:31:00 | INFO     | [run_extraction] 📄 Pág 13/131 | ⏱️ 5.48s | 📦 Acumulado: 1241
+2026-02-09 09:31:05 | INFO     | [run_extraction] 📄 Pág 14/131 | ⏱️ 4.71s | 📦 Acumulado: 1327
+2026-02-09 09:31:12 | INFO     | [run_extraction] 📄 Pág 15/131 | ⏱️ 6.73s | 📦 Acumulado: 1420
+2026-02-09 09:31:18 | INFO     | [run_extraction] 📄 Pág 16/131 | ⏱️ 5.48s | 📦 Acumulado: 1500
+2026-02-09 09:31:23 | INFO     | [run_extraction] 📄 Pág 17/131 | ⏱️ 4.82s | 📦 Acumulado: 1565
+2026-02-09 09:31:27 | INFO     | [run_extraction] 📄 Pág 18/131 | ⏱️ 4.71s | 📦 Acumulado: 1646
+2026-02-09 09:31:33 | INFO     | [run_extraction] 📄 Pág 19/131 | ⏱️ 5.02s | 📦 Acumulado: 1734
+2026-02-09 09:31:38 | INFO     | [run_extraction] 📄 Pág 20/131 | ⏱️ 5.29s | 📦 Acumulado: 1814
+2026-02-09 09:31:43 | INFO     | [run_extraction] 📄 Pág 21/131 | ⏱️ 4.77s | 📦 Acumulado: 1897
+2026-02-09 09:31:49 | INFO     | [run_extraction] 📄 Pág 22/131 | ⏱️ 5.19s | 📦 Acumulado: 1972
+2026-02-09 09:31:54 | INFO     | [run_extraction] 📄 Pág 23/131 | ⏱️ 5.73s | 📦 Acumulado: 2047
+2026-02-09 09:32:00 | INFO     | [run_extraction] 📄 Pág 24/131 | ⏱️ 5.77s | 📦 Acumulado: 2126
+2026-02-09 09:32:09 | INFO     | [run_extraction] 📄 Pág 25/131 | ⏱️ 8.72s | 📦 Acumulado: 2201
+2026-02-09 09:32:14 | INFO     | [run_extraction] 📄 Pág 26/131 | ⏱️ 4.91s | 📦 Acumulado: 2274
+2026-02-09 09:32:23 | INFO     | [run_extraction] 📄 Pág 27/131 | ⏱️ 8.70s | 📦 Acumulado: 2360
+2026-02-09 09:32:28 | INFO     | [run_extraction] 📄 Pág 28/131 | ⏱️ 4.72s | 📦 Acumulado: 2446
+2026-02-09 09:32:34 | INFO     | [run_extraction] 📄 Pág 29/131 | ⏱️ 5.21s | 📦 Acumulado: 2525
+2026-02-09 09:32:39 | INFO     | [run_extraction] 📄 Pág 30/131 | ⏱️ 5.14s | 📦 Acumulado: 2599
+2026-02-09 09:32:44 | INFO     | [run_extraction] 📄 Pág 31/131 | ⏱️ 5.24s | 📦 Acumulado: 2676
+2026-02-09 09:32:50 | INFO     | [run_extraction] 📄 Pág 32/131 | ⏱️ 5.32s | 📦 Acumulado: 2746
+2026-02-09 09:32:57 | INFO     | [run_extraction] 📄 Pág 33/131 | ⏱️ 6.85s | 📦 Acumulado: 2795
+2026-02-09 09:33:04 | INFO     | [run_extraction] 📄 Pág 34/131 | ⏱️ 6.85s | 📦 Acumulado: 2885
+2026-02-09 09:33:10 | INFO     | [run_extraction] 📄 Pág 35/131 | ⏱️ 5.70s | 📦 Acumulado: 2973
+2026-02-09 09:33:15 | INFO     | [run_extraction] 📄 Pág 36/131 | ⏱️ 4.73s | 📦 Acumulado: 3059
+2026-02-09 09:33:22 | INFO     | [run_extraction] 📄 Pág 37/131 | ⏱️ 6.78s | 📦 Acumulado: 3143
+2026-02-09 09:33:31 | INFO     | [run_extraction] 📄 Pág 38/131 | ⏱️ 8.70s | 📦 Acumulado: 3228
+2026-02-09 09:33:38 | INFO     | [run_extraction] 📄 Pág 39/131 | ⏱️ 6.83s | 📦 Acumulado: 3297
+2026-02-09 09:33:44 | INFO     | [run_extraction] 📄 Pág 40/131 | ⏱️ 5.45s | 📦 Acumulado: 3371
+2026-02-09 09:33:49 | INFO     | [run_extraction] 📄 Pág 41/131 | ⏱️ 4.77s | 📦 Acumulado: 3456
+2026-02-09 09:33:54 | INFO     | [run_extraction] 📄 Pág 42/131 | ⏱️ 5.74s | 📦 Acumulado: 3547
+2026-02-09 09:34:00 | INFO     | [run_extraction] 📄 Pág 43/131 | ⏱️ 5.41s | 📦 Acumulado: 3638
+2026-02-09 09:34:07 | INFO     | [run_extraction] 📄 Pág 44/131 | ⏱️ 6.88s | 📦 Acumulado: 3715
+2026-02-09 09:34:12 | INFO     | [run_extraction] 📄 Pág 45/131 | ⏱️ 4.75s | 📦 Acumulado: 3798
+2026-02-09 09:34:25 | INFO     | [run_extraction] 📄 Pág 46/131 | ⏱️ 12.65s | 📦 Acumulado: 3862
+2026-02-09 09:34:30 | INFO     | [run_extraction] 📄 Pág 47/131 | ⏱️ 4.71s | 📦 Acumulado: 3961
+2026-02-09 09:34:35 | INFO     | [run_extraction] 📄 Pág 48/131 | ⏱️ 5.18s | 📦 Acumulado: 4053
+2026-02-09 09:34:41 | INFO     | [run_extraction] 📄 Pág 49/131 | ⏱️ 5.65s | 📦 Acumulado: 4144
+2026-02-09 09:34:46 | INFO     | [run_extraction] 📄 Pág 50/131 | ⏱️ 4.97s | 📦 Acumulado: 4232
+2026-02-09 09:34:51 | INFO     | [run_extraction] 📄 Pág 51/131 | ⏱️ 4.71s | 📦 Acumulado: 4319
+2026-02-09 09:34:57 | INFO     | [run_extraction] 📄 Pág 52/131 | ⏱️ 5.43s | 📦 Acumulado: 4404
+2026-02-09 09:35:02 | INFO     | [run_extraction] 📄 Pág 53/131 | ⏱️ 4.91s | 📦 Acumulado: 4488
+2026-02-09 09:35:07 | INFO     | [run_extraction] 📄 Pág 54/131 | ⏱️ 5.22s | 📦 Acumulado: 4550
+2026-02-09 09:35:12 | INFO     | [run_extraction] 📄 Pág 55/131 | ⏱️ 4.81s | 📦 Acumulado: 4644
+2026-02-09 09:35:18 | INFO     | [run_extraction] 📄 Pág 56/131 | ⏱️ 5.10s | 📦 Acumulado: 4736
+2026-02-09 09:35:27 | INFO     | [run_extraction] 📄 Pág 57/131 | ⏱️ 8.79s | 📦 Acumulado: 4815
+2026-02-09 09:35:32 | INFO     | [run_extraction] 📄 Pág 58/131 | ⏱️ 5.26s | 📦 Acumulado: 4909
+2026-02-09 09:35:37 | INFO     | [run_extraction] 📄 Pág 59/131 | ⏱️ 5.04s | 📦 Acumulado: 4989
+2026-02-09 09:35:43 | INFO     | [run_extraction] 📄 Pág 60/131 | ⏱️ 5.75s | 📦 Acumulado: 5072
+2026-02-09 09:35:48 | INFO     | [run_extraction] 📄 Pág 61/131 | ⏱️ 4.96s | 📦 Acumulado: 5149
+2026-02-09 09:35:54 | INFO     | [run_extraction] 📄 Pág 62/131 | ⏱️ 4.84s | 📦 Acumulado: 5214
+2026-02-09 09:36:01 | INFO     | [run_extraction] 📄 Pág 63/131 | ⏱️ 6.85s | 📦 Acumulado: 5299
+2026-02-09 09:36:06 | INFO     | [run_extraction] 📄 Pág 64/131 | ⏱️ 5.64s | 📦 Acumulado: 5386
+2026-02-09 09:36:13 | INFO     | [run_extraction] 📄 Pág 65/131 | ⏱️ 6.82s | 📦 Acumulado: 5474
+2026-02-09 09:36:23 | INFO     | [run_extraction] 📄 Pág 66/131 | ⏱️ 8.92s | 📦 Acumulado: 5564
+2026-02-09 09:36:30 | INFO     | [run_extraction] 📄 Pág 67/131 | ⏱️ 6.81s | 📦 Acumulado: 5645
+2026-02-09 09:36:37 | INFO     | [run_extraction] 📄 Pág 68/131 | ⏱️ 6.85s | 📦 Acumulado: 5734
+2026-02-09 09:36:42 | INFO     | [run_extraction] 📄 Pág 69/131 | ⏱️ 5.03s | 📦 Acumulado: 5828
+2026-02-09 09:36:50 | INFO     | [run_extraction] 📄 Pág 70/131 | ⏱️ 7.76s | 📦 Acumulado: 5887
+2026-02-09 09:36:55 | INFO     | [run_extraction] 📄 Pág 71/131 | ⏱️ 4.81s | 📦 Acumulado: 5971
+2026-02-09 09:37:00 | INFO     | [run_extraction] 📄 Pág 72/131 | ⏱️ 4.97s | 📦 Acumulado: 6058
+2026-02-09 09:37:06 | INFO     | [run_extraction] 📄 Pág 73/131 | ⏱️ 5.62s | 📦 Acumulado: 6148
+2026-02-09 09:37:11 | INFO     | [run_extraction] 📄 Pág 74/131 | ⏱️ 5.44s | 📦 Acumulado: 6227
+2026-02-09 09:37:18 | INFO     | [run_extraction] 📄 Pág 75/131 | ⏱️ 6.82s | 📦 Acumulado: 6295
+2026-02-09 09:37:24 | INFO     | [run_extraction] 📄 Pág 76/131 | ⏱️ 4.93s | 📦 Acumulado: 6388
+2026-02-09 09:37:31 | INFO     | [run_extraction] 📄 Pág 77/131 | ⏱️ 6.83s | 📦 Acumulado: 6472
+2026-02-09 09:37:36 | INFO     | [run_extraction] 📄 Pág 78/131 | ⏱️ 5.27s | 📦 Acumulado: 6543
+2026-02-09 09:37:41 | INFO     | [run_extraction] 📄 Pág 79/131 | ⏱️ 4.76s | 📦 Acumulado: 6629
+2026-02-09 09:37:46 | INFO     | [run_extraction] 📄 Pág 80/131 | ⏱️ 4.80s | 📦 Acumulado: 6697
+2026-02-09 09:37:51 | INFO     | [run_extraction] 📄 Pág 81/131 | ⏱️ 4.71s | 📦 Acumulado: 6758
+2026-02-09 09:37:56 | INFO     | [run_extraction] 📄 Pág 82/131 | ⏱️ 4.73s | 📦 Acumulado: 6850
+2026-02-09 09:38:01 | INFO     | [run_extraction] 📄 Pág 83/131 | ⏱️ 4.71s | 📦 Acumulado: 6936
+2026-02-09 09:38:06 | INFO     | [run_extraction] 📄 Pág 84/131 | ⏱️ 4.89s | 📦 Acumulado: 7024
+2026-02-09 09:38:11 | INFO     | [run_extraction] 📄 Pág 85/131 | ⏱️ 4.76s | 📦 Acumulado: 7103
+2026-02-09 09:38:16 | INFO     | [run_extraction] 📄 Pág 86/131 | ⏱️ 5.22s | 📦 Acumulado: 7186
+2026-02-09 09:38:21 | INFO     | [run_extraction] 📄 Pág 87/131 | ⏱️ 4.74s | 📦 Acumulado: 7257
+2026-02-09 09:38:26 | INFO     | [run_extraction] 📄 Pág 88/131 | ⏱️ 4.80s | 📦 Acumulado: 7341
+2026-02-09 09:38:31 | INFO     | [run_extraction] 📄 Pág 89/131 | ⏱️ 4.71s | 📦 Acumulado: 7416
+2026-02-09 09:38:36 | INFO     | [run_extraction] 📄 Pág 90/131 | ⏱️ 4.85s | 📦 Acumulado: 7506
+2026-02-09 09:38:42 | INFO     | [run_extraction] 📄 Pág 91/131 | ⏱️ 5.12s | 📦 Acumulado: 7591
+2026-02-09 09:38:47 | INFO     | [run_extraction] 📄 Pág 92/131 | ⏱️ 4.95s | 📦 Acumulado: 7666
+2026-02-09 09:38:52 | INFO     | [run_extraction] 📄 Pág 93/131 | ⏱️ 5.55s | 📦 Acumulado: 7727
+2026-02-09 09:38:58 | INFO     | [run_extraction] 📄 Pág 94/131 | ⏱️ 5.49s | 📦 Acumulado: 7798
+2026-02-09 09:39:05 | INFO     | [run_extraction] 📄 Pág 95/131 | ⏱️ 6.89s | 📦 Acumulado: 7878
+2026-02-09 09:39:11 | INFO     | [run_extraction] 📄 Pág 96/131 | ⏱️ 5.60s | 📦 Acumulado: 7965
+2026-02-09 09:39:16 | INFO     | [run_extraction] 📄 Pág 97/131 | ⏱️ 5.24s | 📦 Acumulado: 8048
+2026-02-09 09:39:22 | INFO     | [run_extraction] 📄 Pág 98/131 | ⏱️ 5.29s | 📦 Acumulado: 8126
+2026-02-09 09:39:29 | INFO     | [run_extraction] 📄 Pág 99/131 | ⏱️ 6.81s | 📦 Acumulado: 8215
+2026-02-09 09:39:34 | INFO     | [run_extraction] 📄 Pág 100/131 | ⏱️ 4.70s | 📦 Acumulado: 8287
+2026-02-09 09:39:39 | INFO     | [run_extraction] 📄 Pág 101/131 | ⏱️ 5.03s | 📦 Acumulado: 8367
+2026-02-09 09:39:45 | INFO     | [run_extraction] 📄 Pág 102/131 | ⏱️ 5.26s | 📦 Acumulado: 8451
+2026-02-09 09:39:50 | INFO     | [run_extraction] 📄 Pág 103/131 | ⏱️ 4.74s | 📦 Acumulado: 8503
+2026-02-09 09:39:55 | INFO     | [run_extraction] 📄 Pág 104/131 | ⏱️ 5.63s | 📦 Acumulado: 8575
+2026-02-09 09:40:26 | ERROR    | [post] 💥 Falha na comunicação com a API: ('Connection aborted.', ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None))
+2026-02-09 09:40:26 | WARNING  | [run_extraction] ⚠️ Erro na página 105 (Tentativa 1/3): ('Connection aborted.', ConnectionResetError(10054, 'Foi forçado o cancelamento de uma conexão existente pelo host remoto', None, 10054, None))
+2026-02-09 09:40:33 | INFO     | [run_extraction] 📄 Pág 105/131 | ⏱️ 5.07s | 📦 Acumulado: 8668
+2026-02-09 09:40:38 | INFO     | [run_extraction] 📄 Pág 106/131 | ⏱️ 4.81s | 📦 Acumulado: 8758
+2026-02-09 09:40:45 | INFO     | [run_extraction] 📄 Pág 107/131 | ⏱️ 6.90s | 📦 Acumulado: 8854
+2026-02-09 09:40:50 | INFO     | [run_extraction] 📄 Pág 108/131 | ⏱️ 4.83s | 📦 Acumulado: 8935
+2026-02-09 09:40:56 | INFO     | [run_extraction] 📄 Pág 109/131 | ⏱️ 6.16s | 📦 Acumulado: 9025
+2026-02-09 09:41:06 | INFO     | [run_extraction] 📄 Pág 110/131 | ⏱️ 9.67s | 📦 Acumulado: 9105
+2026-02-09 09:41:11 | INFO     | [run_extraction] 📄 Pág 111/131 | ⏱️ 4.98s | 📦 Acumulado: 9175
+2026-02-09 09:41:17 | INFO     | [run_extraction] 📄 Pág 112/131 | ⏱️ 5.27s | 📦 Acumulado: 9231
+2026-02-09 09:41:22 | INFO     | [run_extraction] 📄 Pág 113/131 | ⏱️ 4.73s | 📦 Acumulado: 9331
+2026-02-09 09:41:27 | INFO     | [run_extraction] 📄 Pág 114/131 | ⏱️ 4.80s | 📦 Acumulado: 9426
+2026-02-09 09:41:32 | INFO     | [run_extraction] 📄 Pág 115/131 | ⏱️ 4.75s | 📦 Acumulado: 9517
+2026-02-09 09:41:39 | INFO     | [run_extraction] 📄 Pág 116/131 | ⏱️ 6.79s | 📦 Acumulado: 9613
+2026-02-09 09:41:44 | INFO     | [run_extraction] 📄 Pág 117/131 | ⏱️ 5.48s | 📦 Acumulado: 9706
+2026-02-09 09:41:49 | INFO     | [run_extraction] 📄 Pág 118/131 | ⏱️ 4.73s | 📦 Acumulado: 9792
+2026-02-09 09:41:56 | INFO     | [run_extraction] 📄 Pág 119/131 | ⏱️ 6.86s | 📦 Acumulado: 9881
+2026-02-09 09:42:01 | INFO     | [run_extraction] 📄 Pág 120/131 | ⏱️ 4.80s | 📦 Acumulado: 9961
+2026-02-09 09:42:06 | INFO     | [run_extraction] 📄 Pág 121/131 | ⏱️ 4.70s | 📦 Acumulado: 10046
+2026-02-09 09:42:12 | INFO     | [run_extraction] 📄 Pág 122/131 | ⏱️ 5.67s | 📦 Acumulado: 10135
+2026-02-09 09:42:17 | INFO     | [run_extraction] 📄 Pág 123/131 | ⏱️ 5.16s | 📦 Acumulado: 10229
+2026-02-09 09:42:23 | INFO     | [run_extraction] 📄 Pág 124/131 | ⏱️ 5.08s | 📦 Acumulado: 10315
+2026-02-09 09:42:28 | INFO     | [run_extraction] 📄 Pág 125/131 | ⏱️ 4.73s | 📦 Acumulado: 10391
+2026-02-09 09:42:33 | INFO     | [run_extraction] 📄 Pág 126/131 | ⏱️ 4.74s | 📦 Acumulado: 10480
+2026-02-09 09:42:37 | INFO     | [run_extraction] 📄 Pág 127/131 | ⏱️ 4.66s | 📦 Acumulado: 10579
+2026-02-09 09:42:42 | INFO     | [run_extraction] 📄 Pág 128/131 | ⏱️ 4.67s | 📦 Acumulado: 10673
+2026-02-09 09:42:48 | INFO     | [run_extraction] 📄 Pág 129/131 | ⏱️ 5.38s | 📦 Acumulado: 10768
+2026-02-09 09:42:55 | INFO     | [run_extraction] 📄 Pág 130/131 | ⏱️ 7.29s | 📦 Acumulado: 10860
+2026-02-09 09:43:00 | INFO     | [run_extraction] 📄 Pág 131/131 | ⏱️ 4.72s | 📦 Acumulado: 10939
+2026-02-09 09:43:02 | INFO     | [_save] 💾 Arquivo salvo: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_01_2025.json
+2026-02-09 09:43:02 | INFO     | [run_extraction] 🏁 Extração finalizada com sucesso em 13.9 minutos.
+2026-02-09 09:43:51 | INFO     | [process_files] 📂 Lendo arquivos JSON processados...
+2026-02-09 09:43:52 | INFO     | [_generate_excel] 📊 Gerando Excel em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\Relatorio_Faturamento.xlsx
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: FEV20 (1 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: JAN24 (40 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: FEV24 (38 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: MAR24 (61 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: ABR24 (46 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: MAI24 (32 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: JUN24 (49 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: JUL24 (30 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: AGO24 (54 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: SET24 (44 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: OUT24 (40 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: NOV24 (30 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: DEZ24 (38 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: JAN25 (529 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: FEV25 (725 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: MAR25 (709 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: ABR25 (570 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: MAI25 (610 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: JUN25 (553 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: JUL25 (706 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: AGO25 (681 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: SET25 (778 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: OUT25 (886 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: NOV25 (835 pedidos)
+2026-02-09 09:43:52 | INFO     | [_generate_excel]   ✅ Aba criada: DEZ25 (784 pedidos)
+2026-02-09 09:43:53 | INFO     | [_generate_excel]   ✅ Aba criada: JAN26 (981 pedidos)
+2026-02-09 09:43:53 | INFO     | [_generate_excel]   ✅ Aba criada: FEV26 (888 pedidos)
+2026-02-09 09:43:53 | INFO     | [_generate_excel]   ✅ Aba criada: MAR26 (93 pedidos)
+2026-02-09 09:43:53 | INFO     | [_generate_excel]   ✅ Aba criada: ABR26 (93 pedidos)
+2026-02-09 09:43:53 | INFO     | [_generate_excel]   ✅ Aba criada: MAI26 (9 pedidos)
+2026-02-09 09:43:53 | INFO     | [_generate_excel]   ✅ Aba criada: JUN26 (5 pedidos)
+2026-02-09 09:43:53 | INFO     | [_generate_excel]   ✅ Aba criada: OUT27 (1 pedidos)
+2026-02-09 09:43:53 | INFO     | [_generate_excel] 🚀 Relatório Excel gerado com sucesso!
+2026-02-09 09:49:12 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (09/02/2026).
+2026-02-09 09:49:12 | INFO     | [<module>] ⚙️ Configuração de Período: 01/01/2025 até 09/02/2026
+2026-02-09 09:49:12 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/01/2025 até 09/02/2026
+2026-02-09 09:49:20 | INFO     | [run_extraction] 📄 Pág 1/131 | ⏱️ 7.56s | 📦 Acumulado: 100
+2026-02-09 09:49:29 | INFO     | [run_extraction] 📄 Pág 2/131 | ⏱️ 9.26s | 📦 Acumulado: 200
+2026-02-09 09:49:37 | INFO     | [run_extraction] 📄 Pág 3/131 | ⏱️ 7.48s | 📦 Acumulado: 300
+2026-02-09 09:49:42 | INFO     | [process_files] 📂 Lendo arquivos JSON processados e extraindo TODOS os dados...
+2026-02-09 09:49:42 | INFO     | [_generate_excel] 📊 Gerando Excel estruturado em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\Relatorio_Faturamento_Completo.xlsx
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: FEV20 (1 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: JAN24 (40 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: FEV24 (38 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: MAR24 (61 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: ABR24 (46 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: MAI24 (32 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: JUN24 (49 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: JUL24 (30 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: AGO24 (54 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: SET24 (44 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: OUT24 (40 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: NOV24 (30 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: DEZ24 (38 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: JAN25 (529 registros)
+2026-02-09 09:49:42 | INFO     | [_generate_excel]   ✅ Aba criada: FEV25 (725 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: MAR25 (709 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: ABR25 (570 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: MAI25 (610 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: JUN25 (553 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: JUL25 (706 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: AGO25 (681 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: SET25 (778 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: OUT25 (886 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: NOV25 (835 registros)
+2026-02-09 09:49:43 | INFO     | [_generate_excel]   ✅ Aba criada: DEZ25 (784 registros)
+2026-02-09 09:49:44 | INFO     | [_generate_excel]   ✅ Aba criada: JAN26 (981 registros)
+2026-02-09 09:49:44 | INFO     | [_generate_excel]   ✅ Aba criada: FEV26 (888 registros)
+2026-02-09 09:49:44 | INFO     | [_generate_excel]   ✅ Aba criada: MAR26 (93 registros)
+2026-02-09 09:49:44 | INFO     | [_generate_excel]   ✅ Aba criada: ABR26 (93 registros)
+2026-02-09 09:49:44 | INFO     | [_generate_excel]   ✅ Aba criada: MAI26 (9 registros)
+2026-02-09 09:49:44 | INFO     | [_generate_excel]   ✅ Aba criada: JUN26 (5 registros)
+2026-02-09 09:49:44 | INFO     | [_generate_excel]   ✅ Aba criada: OUT27 (1 registros)
+2026-02-09 09:49:58 | INFO     | [_apply_styles] 🎨 Estilos aplicados com sucesso!
+2026-02-09 09:52:37 | INFO     | [process_files] 📂 Lendo arquivos JSON e processando base de Faturamento...
+2026-02-09 09:52:37 | INFO     | [_generate_excel] 📊 Gerando Excel estruturado em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\Relatorio_Faturamento_Por_Competencia.xlsx
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: FEV20 (1 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: JAN24 (40 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: FEV24 (38 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: MAR24 (61 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: ABR24 (46 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: MAI24 (32 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: JUN24 (49 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: JUL24 (30 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: AGO24 (54 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: SET24 (44 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: OUT24 (40 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: NOV24 (30 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: DEZ24 (38 registros)
+2026-02-09 09:52:37 | INFO     | [_generate_excel]   ✅ Aba criada: JAN25 (558 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: FEV25 (701 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: MAR25 (709 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: ABR25 (566 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: MAI25 (609 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: JUN25 (556 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: JUL25 (705 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: AGO25 (681 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: SET25 (786 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: OUT25 (879 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: NOV25 (835 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: DEZ25 (782 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: JAN26 (982 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: FEV26 (888 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: MAR26 (93 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: ABR26 (93 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: MAI26 (9 registros)
+2026-02-09 09:52:38 | INFO     | [_generate_excel]   ✅ Aba criada: JUN26 (4 registros)
+2026-02-09 09:52:46 | INFO     | [_apply_styles] 🎨 Estilos aplicados com sucesso!
+2026-02-09 10:03:43 | INFO     | [process_files] 📂 Lendo arquivos JSON e processando base de Faturamento...
+2026-02-09 10:03:43 | INFO     | [_generate_excel] 📊 Gerando Excel estruturado em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\Relatorio_Faturamento_Por_Ano.xlsx
+2026-02-09 10:03:43 | INFO     | [_generate_excel]   ✅ Aba criada: 2020 (1 registros)
+2026-02-09 10:03:43 | INFO     | [_generate_excel]   ✅ Aba criada: 2024 (502 registros)
+2026-02-09 10:03:44 | INFO     | [_generate_excel]   ✅ Aba criada: 2025 (8367 registros)
+2026-02-09 10:03:44 | INFO     | [_generate_excel]   ✅ Aba criada: 2026 (2069 registros)
+2026-02-09 10:03:52 | INFO     | [_apply_styles] 🎨 Estilos aplicados com sucesso!
+2026-02-09 10:44:25 | INFO     | [process_files] 📂 Lendo arquivos JSON e mapeando TODOS os campos...
+2026-02-09 10:44:25 | INFO     | [_generate_excel] 📊 Gerando Excel estruturado em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\Relatorio_Faturamento_Completo.xlsx
+2026-02-09 10:44:25 | INFO     | [_generate_excel]   ✅ Aba criada: 2020 (1 pedidos)
+2026-02-09 10:44:25 | INFO     | [_generate_excel]   ✅ Aba criada: 2024 (502 pedidos)
+2026-02-09 10:44:27 | INFO     | [_generate_excel]   ✅ Aba criada: 2025 (8367 pedidos)
+2026-02-09 10:44:28 | INFO     | [_generate_excel]   ✅ Aba criada: 2026 (2069 pedidos)
+2026-02-09 10:44:44 | INFO     | [_apply_styles] 🎨 Estilos aplicados com sucesso!
+2026-02-11 10:09:00 | WARNING  | [_load_manifestados] ⚠️ Arquivo manifestados.json não encontrado. Nenhum pedido será filtrado.
+2026-02-11 10:09:00 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (11/02/2026).
+2026-02-11 10:09:00 | INFO     | [<module>] ⚙️ Configuração de Período: 01/01/2025 até 11/02/2026
+2026-02-11 10:09:00 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/01/2025 até 11/02/2026
+2026-02-11 10:09:07 | INFO     | [run_extraction] 📄 Pág 1/133 | ⏱️ 7.64s | 📦 Acumulado: 100 (Ignorados: 0)
+2026-02-11 10:09:17 | INFO     | [run_extraction] 📄 Pág 2/133 | ⏱️ 9.60s | 📦 Acumulado: 200 (Ignorados: 0)
+2026-02-11 11:36:21 | WARNING  | [_load_id_set] ⚠️ Arquivo manifestados.json não encontrado. Nenhum filtro aplicado.
+2026-02-11 11:36:21 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (11/02/2026).
+2026-02-11 11:36:21 | INFO     | [<module>] ⚙️ Configuração de Período: 01/01/2025 até 11/02/2026
+2026-02-11 11:36:21 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/01/2025 até 11/02/2026
+2026-02-11 11:36:31 | INFO     | [run_extraction] 📄 Pág 1/133 | ⏱️ 9.44s | 📦 Acumulado: 100 (Ignorados: 0)
+2026-02-11 11:37:04 | WARNING  | [_load_id_set] ⚠️ Arquivo manifestados.json não encontrado. Nenhum filtro aplicado.
+2026-02-11 11:37:04 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (11/02/2026).
+2026-02-11 11:37:04 | INFO     | [<module>] ⚙️ Configuração de Período: 01/02/2025 até 11/02/2026
+2026-02-11 11:37:04 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/02/2025 até 11/02/2026
+2026-02-11 11:37:12 | INFO     | [run_extraction] 📄 Pág 1/126 | ⏱️ 7.54s | 📦 Acumulado: 100 (Ignorados: 0)
+2026-02-11 11:37:21 | INFO     | [run_extraction] 📄 Pág 2/126 | ⏱️ 9.14s | 📦 Acumulado: 200 (Ignorados: 0)
+2026-02-11 11:37:32 | WARNING  | [_load_id_set] ⚠️ Arquivo manifestados.json não encontrado. Nenhum filtro aplicado.
+2026-02-11 11:37:32 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (11/02/2026).
+2026-02-11 11:37:32 | INFO     | [<module>] ⚙️ Configuração de Período: 01/02/2026 até 11/02/2026
+2026-02-11 11:37:32 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/02/2026 até 11/02/2026
+2026-02-11 11:37:43 | INFO     | [run_extraction] 📄 Pág 1/13 | ⏱️ 10.90s | 📦 Acumulado: 98 (Ignorados: 0)
+2026-02-11 11:38:10 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (11/02/2026).
+2026-02-11 11:38:11 | INFO     | [<module>] ⚙️ Configuração de Período: 01/02/2026 até 11/02/2026
+2026-02-11 11:38:11 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/02/2026 até 11/02/2026
+2026-02-11 11:38:51 | ERROR    | [post] 💥 Falha na comunicação com a API: HTTPSConnectionPool(host='app.omie.com.br', port=443): Read timed out. (read timeout=40)
+2026-02-11 11:38:51 | WARNING  | [run_extraction] ⚠️ Erro na página 1 (Tentativa 1/3): HTTPSConnectionPool(host='app.omie.com.br', port=443): Read timed out. (read timeout=40)
+2026-02-11 11:39:04 | INFO     | [run_extraction] 📄 Pág 1/13 | ⏱️ 11.04s | 📦 Acumulado: 98 (Ignorados: 0)
+2026-02-11 11:39:07 | INFO     | [<module>] ℹ️ DATA_FIM não definida. Assumindo até hoje (11/02/2026).
+2026-02-11 11:39:08 | INFO     | [<module>] ⚙️ Configuração de Período: 01/02/2026 até 11/02/2026
+2026-02-11 11:39:08 | INFO     | [run_extraction] 🚀 Iniciando Extração Automática: 01/02/2026 até 11/02/2026
+2026-02-11 11:39:48 | ERROR    | [post] 💥 Falha na comunicação com a API: HTTPSConnectionPool(host='app.omie.com.br', port=443): Read timed out. (read timeout=40)
+2026-02-11 11:39:48 | WARNING  | [run_extraction] ⚠️ Erro na página 1 (Tentativa 1/3): HTTPSConnectionPool(host='app.omie.com.br', port=443): Read timed out. (read timeout=40)
+2026-02-11 11:40:31 | ERROR    | [post] 💥 Falha na comunicação com a API: HTTPSConnectionPool(host='app.omie.com.br', port=443): Read timed out. (read timeout=40)
+2026-02-11 11:40:31 | WARNING  | [run_extraction] ⚠️ Erro na página 1 (Tentativa 2/3): HTTPSConnectionPool(host='app.omie.com.br', port=443): Read timed out. (read timeout=40)
+2026-02-11 11:40:44 | INFO     | [run_extraction] 📄 Pág 1/13 | ⏱️ 9.97s | 📦 Acumulado: 98 (Ignorados: 0)
+2026-02-11 11:40:52 | INFO     | [run_extraction] 📄 Pág 2/13 | ⏱️ 6.87s | 📦 Acumulado: 198 (Ignorados: 0)
+2026-02-11 11:41:00 | INFO     | [run_extraction] 📄 Pág 3/13 | ⏱️ 7.84s | 📦 Acumulado: 297 (Ignorados: 0)
+2026-02-11 11:41:05 | INFO     | [run_extraction] 📄 Pág 4/13 | ⏱️ 5.08s | 📦 Acumulado: 397 (Ignorados: 0)
+2026-02-11 11:41:10 | INFO     | [run_extraction] 📄 Pág 5/13 | ⏱️ 4.72s | 📦 Acumulado: 487 (Ignorados: 0)
+2026-02-11 11:41:15 | INFO     | [run_extraction] 📄 Pág 6/13 | ⏱️ 4.68s | 📦 Acumulado: 581 (Ignorados: 0)
+2026-02-11 11:41:20 | INFO     | [run_extraction] 📄 Pág 7/13 | ⏱️ 4.69s | 📦 Acumulado: 678 (Ignorados: 0)
+2026-02-11 11:41:25 | INFO     | [run_extraction] 📄 Pág 8/13 | ⏱️ 4.76s | 📦 Acumulado: 772 (Ignorados: 0)
+2026-02-11 11:41:31 | INFO     | [run_extraction] 📄 Pág 9/13 | ⏱️ 5.87s | 📦 Acumulado: 864 (Ignorados: 0)
+2026-02-11 11:41:38 | INFO     | [run_extraction] 📄 Pág 10/13 | ⏱️ 6.83s | 📦 Acumulado: 959 (Ignorados: 0)
+2026-02-11 11:41:43 | INFO     | [run_extraction] 📄 Pág 11/13 | ⏱️ 5.20s | 📦 Acumulado: 1049 (Ignorados: 0)
+2026-02-11 11:41:48 | INFO     | [run_extraction] 📄 Pág 12/13 | ⏱️ 5.10s | 📦 Acumulado: 1139 (Ignorados: 0)
+2026-02-11 11:41:51 | INFO     | [run_extraction] 📄 Pág 13/13 | ⏱️ 2.58s | 📦 Acumulado: 1152 (Ignorados: 0)
+2026-02-11 11:41:51 | INFO     | [_save_faturamento] 💾 Arquivo de faturamento salvo: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
+2026-02-11 11:41:51 | INFO     | [_update_processados_file] ✅ Histórico atualizado: 1213 novos IDs adicionados ao 'processados.json'.
+2026-02-11 11:41:51 | INFO     | [run_extraction] 🏁 Finalizado. Salvos: 1152 | Manifestados Ignorados: 0 | Tempo: 2.7 min
