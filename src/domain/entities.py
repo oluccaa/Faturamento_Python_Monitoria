@@ -108,6 +108,13 @@ class TotalPedido:
         self.valor_total_pedido = _to_decimal(self.valor_total_pedido)
 
 @dataclass
+class NotaFiscalRefinada:
+    nNF: str = ""
+    dEmi: str = ""
+    hEmi: str = ""
+    cChaveNFe: str = ""
+
+@dataclass
 class PedidoRefinado:
     cabecalho: Cabecalho = field(default_factory=Cabecalho)
     infoCadastro: InfoCadastro = field(default_factory=InfoCadastro)
@@ -115,6 +122,7 @@ class PedidoRefinado:
     lista_parcelas: ListaParcelas = field(default_factory=ListaParcelas)
     observacoes: Observacoes = field(default_factory=Observacoes)
     total_pedido: TotalPedido = field(default_factory=TotalPedido)
+    nota_fiscal: NotaFiscalRefinada = field(default_factory=NotaFiscalRefinada)
 
     def to_dict(self) -> Dict[str, Any]:
         """Serializa para JSON-safe convertendo Decimals para float."""

@@ -1,7 +1,7 @@
-from typing import Dict, Any, Union, List
+from typing import Dict, Any, Union, List, Optional
 from src.domain.entities import (
     PedidoRefinado, Cabecalho, InfoCadastro, InformacoesAdicionais, 
-    ListaParcelas, Parcela, Observacoes, TotalPedido
+    ListaParcelas, Parcela, Observacoes, TotalPedido, NotaFiscalRefinada
 )
 
 class BillingDomainService:
@@ -15,7 +15,7 @@ class BillingDomainService:
     def _get_safe_dict(self, source: Any, key: str) -> dict:
         """
         Helper para extrair dicionários da API Omie.
-        Trata o caso comum onde a API retorna lista vazia [] em vez de objeto {}.
+        Trata o caso onde a API retorna lista vazia [] em vez de objeto {}.
         """
         if not isinstance(source, dict):
             return {}
@@ -35,7 +35,6 @@ class BillingDomainService:
             return f"Vendedor {cod_str}"
             
         if isinstance(entry, dict):
-            # Tenta pegar o nome em diferentes chaves possíveis da API Omie
             return entry.get("nome") or entry.get("nome_exibicao") or f"Vendedor {cod_str}"
         
         return str(entry)
@@ -54,9 +53,10 @@ class BillingDomainService:
             "cChaveNFe": str(compl.get("cChaveNFe", "")).strip()
         }
 
-    def clean_order_data(self, raw_order: dict) -> dict:
+    def clean_order_data(self, raw_order: dict, nf_data: Optional[dict] = None) -> dict:
         """
-        Converte o JSON bruto da Omie em uma entidade PedidoRefinado fortemente tipada.
+        Converte o JSON bruto em uma entidade PedidoRefinado fortemente tipada, 
+        agora incluindo o enriquecimento fiscal.
         """
         
         # 1. Cabecalho
@@ -119,7 +119,6 @@ class BillingDomainService:
         raw_parcelas_container = self._get_safe_dict(raw_order, "lista_parcelas")
         raw_parcelas_list = raw_parcelas_container.get("parcela", [])
         
-        # Normaliza para lista caso a API retorne um único dicionário
         if isinstance(raw_parcelas_list, dict):
             raw_parcelas_list = [raw_parcelas_list]
         elif not isinstance(raw_parcelas_list, list):
@@ -133,7 +132,7 @@ class BillingDomainService:
                     numero_parcela=int(p.get("numero_parcela", 0)),
                     percentual=float(p.get("percentual", 0)),
                     quantidade_dias=int(p.get("quantidade_dias", 0)),
-                    valor=p.get("valor", 0) # Entidade converte para Decimal
+                    valor=p.get("valor", 0)
                 ))
             
         lista_parcelas = ListaParcelas(parcela=parcelas_refinadas)
@@ -150,14 +149,25 @@ class BillingDomainService:
             valor_total_pedido=raw_total.get("valor_total_pedido", 0)
         )
 
-        # Montagem Final
+        # 7. Nota Fiscal (Enriquecimento)
+        nota_fiscal_obj = NotaFiscalRefinada()
+        if nf_data:
+            nota_fiscal_obj = NotaFiscalRefinada(
+                nNF=str(nf_data.get("nNF", "")),
+                dEmi=str(nf_data.get("dEmi", "")),
+                hEmi=str(nf_data.get("hEmi", "")),
+                cChaveNFe=str(nf_data.get("cChaveNFe", ""))
+            )
+
+        # Montagem Final corrigida (adicionada a vírgula faltante)
         pedido = PedidoRefinado(
             cabecalho=cabecalho,
             infoCadastro=info,
             informacoes_adicionais=adicionais,
             lista_parcelas=lista_parcelas,
             observacoes=observacoes,
-            total_pedido=total_pedido
+            total_pedido=total_pedido,
+            nota_fiscal=nota_fiscal_obj
         )
 
         return pedido.to_dict()
