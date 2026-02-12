@@ -1,0 +1,483 @@
+{
+  "20480": {
+    "pedido_venda_produto": {
+      "cabecalho": {
+        "bloqueado": "",
+        "codigo_cenario_impostos": "9779717212",
+        "codigo_cliente": 9765167211,
+        "codigo_parcela": "A03",
+        "codigo_pedido": 10318655878,
+        "data_previsao": "11/02/2026",
+        "etapa": "60",
+        "numero_pedido": "20480",
+        "origem_pedido": "ERP",
+        "qtde_parcelas": 1,
+        "quantidade_itens": 1
+      },
+      "infoCadastro": {
+        "autorizado": "S",
+        "cImpAPI": "N",
+        "cancelado": "N",
+        "dAlt": "11/02/2026",
+        "dFat": "11/02/2026",
+        "dInc": "11/02/2026",
+        "denegado": "N",
+        "devolvido": "N",
+        "devolvido_parcial": "N",
+        "faturado": "S",
+        "hAlt": "17:21:11",
+        "hFat": "17:21:11",
+        "hInc": "17:14:50",
+        "uAlt": "P000716793",
+        "uFat": "P000716793",
+        "uInc": "P000716793"
+      },
+      "informacoes_adicionais": {
+        "codProj": 9779703251,
+        "codVend": 9797133033,
+        "vendedor_nome": "Vendedor 9797133033",
+        "codigo_categoria": "1.01.01",
+        "categoria_nome": "Receitas Diretas",
+        "codigo_conta_corrente": 9770899623,
+        "consumidor_final": "N",
+        "enviar_email": "N",
+        "enviar_pix": "N",
+        "numero_pedido_cliente": "",
+        "utilizar_emails": "nfe@arcelormittal.com.br"
+      },
+      "lista_parcelas": {
+        "parcela": [
+          {
+            "data_vencimento": "14/02/2026",
+            "numero_parcela": 1,
+            "percentual": 100.0,
+            "quantidade_dias": 3,
+            "valor": 9800.0
+          }
+        ]
+      },
+      "observacoes": {
+        "obs_venda": "REFATURAMENTO : 39525"
+      },
+      "total_pedido": {
+        "valor_total_pedido": 9800.0
+      },
+      "nota_fiscal": {
+        "nNF": "",
+        "dEmi": "",
+        "hEmi": "",
+        "cChaveNFe": ""
+      }
+    }
+  },
+  "20481": {
+    "pedido_venda_produto": {
+      "cabecalho": {
+        "bloqueado": "",
+        "codigo_cenario_impostos": "9779717212",
+        "codigo_cliente": 9801156365,
+        "codigo_parcela": "T54",
+        "codigo_pedido": 10318657293,
+        "data_previsao": "11/02/2026",
+        "etapa": "60",
+        "numero_pedido": "20481",
+        "origem_pedido": "ERP",
+        "qtde_parcelas": 1,
+        "quantidade_itens": 2
+      },
+      "infoCadastro": {
+        "autorizado": "S",
+        "cImpAPI": "N",
+        "cancelado": "N",
+        "dAlt": "11/02/2026",
+        "dFat": "11/02/2026",
+        "dInc": "11/02/2026",
+        "denegado": "N",
+        "devolvido": "N",
+        "devolvido_parcial": "N",
+        "faturado": "S",
+        "hAlt": "17:19:15",
+        "hFat": "17:19:15",
+        "hInc": "17:16:49",
+        "uAlt": "P000716793",
+        "uFat": "P000716793",
+        "uInc": "P000716793"
+      },
+      "informacoes_adicionais": {
+        "codProj": 9779703251,
+        "codVend": 9788558509,
+        "vendedor_nome": "Vendedor 9788558509",
+        "codigo_categoria": "1.01.01",
+        "categoria_nome": "Receitas Diretas",
+        "codigo_conta_corrente": 9770899623,
+        "consumidor_final": "N",
+        "enviar_email": "N",
+        "enviar_pix": "N",
+        "numero_pedido_cliente": "",
+        "utilizar_emails": "jaqueline@acosvital.com.br"
+      },
+      "lista_parcelas": {
+        "parcela": [
+          {
+            "data_vencimento": "13/03/2026",
+            "numero_parcela": 1,
+            "percentual": 100.0,
+            "quantidade_dias": 30,
+            "valor": 16674.0
+          }
+        ]
+      },
+      "observacoes": {
+        "obs_venda": "ENCAMINHAR CERTIFICADO DE QUALIDADE E ORIGEM|VENDEDOR AUTORIZOU A SEGUIR SEM OC ||VERIFICAR BENEFICIO FISCAL"
+      },
+      "total_pedido": {
+        "valor_total_pedido": 16674.0
+      },
+      "nota_fiscal": {
+        "nNF": "",
+        "dEmi": "",
+        "hEmi": "",
+        "cChaveNFe": ""
+      }
+    }
+  },
+  "20482": {
+    "pedido_venda_produto": {
+      "cabecalho": {
+        "bloqueado": "N",
+        "codigo_cenario_impostos": "9764259847",
+        "codigo_cliente": 10171342115,
+        "codigo_parcela": "T54",
+        "codigo_pedido": 10318657303,
+        "data_previsao": "18/02/2026",
+        "etapa": "10",
+        "numero_pedido": "20482",
+        "origem_pedido": "ERP",
+        "qtde_parcelas": 1,
+        "quantidade_itens": 1
+      },
+      "infoCadastro": {
+        "autorizado": "N",
+        "cImpAPI": "N",
+        "cancelado": "N",
+        "dAlt": "12/02/2026",
+        "dFat": "",
+        "dInc": "11/02/2026",
+        "denegado": "N",
+        "devolvido": "N",
+        "devolvido_parcial": "N",
+        "faturado": "N",
+        "hAlt": "07:22:18",
+        "hFat": "",
+        "hInc": "17:11:33",
+        "uAlt": "P001209185",
+        "uFat": "",
+        "uInc": "P001263805"
+      },
+      "informacoes_adicionais": {
+        "codProj": 9779703251,
+        "codVend": 10219944055,
+        "vendedor_nome": "Vendedor 10219944055",
+        "codigo_categoria": "1.01.01",
+        "categoria_nome": "Receitas Diretas",
+        "codigo_conta_corrente": 9770899623,
+        "consumidor_final": "N",
+        "enviar_email": "N",
+        "enviar_pix": "N",
+        "numero_pedido_cliente": "093604",
+        "utilizar_emails": "cscfiscal.cadastro@sada.com.br, flavio.paula@sadasiderurgia.com.br, recebimento@sadasiderurgia.com.br, nfe@sada.com.br"
+      },
+      "lista_parcelas": {
+        "parcela": [
+          {
+            "data_vencimento": "20/03/2026",
+            "numero_parcela": 1,
+            "percentual": 100.0,
+            "quantidade_dias": 30,
+            "valor": 29142.84
+          }
+        ]
+      },
+      "observacoes": {
+        "obs_venda": "Encaminhar chapa NTU."
+      },
+      "total_pedido": {
+        "valor_total_pedido": 29142.84
+      },
+      "nota_fiscal": {
+        "nNF": "",
+        "dEmi": "",
+        "hEmi": "",
+        "cChaveNFe": ""
+      }
+    }
+  },
+  "20483": {
+    "pedido_venda_produto": {
+      "cabecalho": {
+        "bloqueado": "N",
+        "codigo_cenario_impostos": "9764259847",
+        "codigo_cliente": 9765167347,
+        "codigo_parcela": "A90",
+        "codigo_pedido": 10318670409,
+        "data_previsao": "27/02/2026",
+        "etapa": "00",
+        "numero_pedido": "20483",
+        "origem_pedido": "ERP",
+        "qtde_parcelas": 1,
+        "quantidade_itens": 0
+      },
+      "infoCadastro": {
+        "autorizado": "N",
+        "cImpAPI": "N",
+        "cancelado": "N",
+        "dAlt": "11/02/2026",
+        "dFat": "",
+        "dInc": "11/02/2026",
+        "denegado": "N",
+        "devolvido": "N",
+        "devolvido_parcial": "N",
+        "faturado": "N",
+        "hAlt": "17:35:48",
+        "hFat": "",
+        "hInc": "17:32:17",
+        "uAlt": "P001236478",
+        "uFat": "",
+        "uInc": "P001236478"
+      },
+      "informacoes_adicionais": {
+        "codProj": 0,
+        "codVend": 10169085229,
+        "vendedor_nome": "Vendedor 10169085229",
+        "codigo_categoria": "1.01.01",
+        "categoria_nome": "Receitas Diretas",
+        "codigo_conta_corrente": 9770899623,
+        "consumidor_final": "N",
+        "enviar_email": "N",
+        "enviar_pix": "N",
+        "numero_pedido_cliente": "4510013920",
+        "utilizar_emails": "raul@acosvital.com.br"
+      },
+      "lista_parcelas": {
+        "parcela": []
+      },
+      "observacoes": {
+        "obs_venda": "*VERIFICAR BENEFÍCIO FISCAL*|ENVIAR PEÇAS SINETADAS CONFORME A NORMA|ENVIAR CERTIFICADO DE QUALIDADE"
+      },
+      "total_pedido": {
+        "valor_total_pedido": 0.0
+      },
+      "nota_fiscal": {
+        "nNF": "",
+        "dEmi": "",
+        "hEmi": "",
+        "cChaveNFe": ""
+      }
+    }
+  },
+  "20484": {
+    "pedido_venda_produto": {
+      "cabecalho": {
+        "bloqueado": "N",
+        "codigo_cenario_impostos": "9764259847",
+        "codigo_cliente": 10318606147,
+        "codigo_parcela": "A15",
+        "codigo_pedido": 10318793927,
+        "data_previsao": "26/03/2026",
+        "etapa": "10",
+        "numero_pedido": "20484",
+        "origem_pedido": "ERP",
+        "qtde_parcelas": 1,
+        "quantidade_itens": 1
+      },
+      "infoCadastro": {
+        "autorizado": "N",
+        "cImpAPI": "N",
+        "cancelado": "N",
+        "dAlt": "12/02/2026",
+        "dFat": "",
+        "dInc": "11/02/2026",
+        "denegado": "N",
+        "devolvido": "N",
+        "devolvido_parcial": "N",
+        "faturado": "N",
+        "hAlt": "07:22:18",
+        "hFat": "",
+        "hInc": "23:04:15",
+        "uAlt": "P001209185",
+        "uFat": "",
+        "uInc": "P001311774"
+      },
+      "informacoes_adicionais": {
+        "codProj": 9779703251,
+        "codVend": 10271008567,
+        "vendedor_nome": "Vendedor 10271008567",
+        "codigo_categoria": "1.01.01",
+        "categoria_nome": "Receitas Diretas",
+        "codigo_conta_corrente": 9770899623,
+        "consumidor_final": "S",
+        "enviar_email": "N",
+        "enviar_pix": "N",
+        "numero_pedido_cliente": "052412",
+        "utilizar_emails": "thi-candido@hotmail.com, steven.nascimento@pronovacosmeticos.com.br"
+      },
+      "lista_parcelas": {
+        "parcela": [
+          {
+            "data_vencimento": "10/04/2026",
+            "numero_parcela": 1,
+            "percentual": 100.0,
+            "quantidade_dias": 15,
+            "valor": 25936.32
+          }
+        ]
+      },
+      "observacoes": {
+        "obs_venda": "Conexões serão soldada no tubo.||Para a hora do corte, separei o melhor aproveitamento dos tubos:||BARRA 01||3,70||2,30 (ajuste a partir de 2,20 + sobra técnica)|Total: 6,00||BARRA 02||3,70||2,30|Total: 6,00||BARRA 03||3,70||2,30|Total: 6,00||BARRA 04||3,70||2,30|Total: 6,00|| BARRA 05||3,70||2,30|Total: 6,00||(Aqui entram 5 peças de 3,70 m)||BARRA 06||3,50||2,50 (2,65 ajustado + perda)|Total: 6,00||BARRA 07||3,50||2,50|Total: 6,00|| BARRA 08||3,45||2,55 (2,60 ajustado)|Total: 6,00||BARRA 09||3,45||2,55|Total: 6,00||BARRA 10||3,45||2,55|Total: 6,00||BARRA 11||3,40||2,60|Total: 6,00||BARRA 12||3,40||2,60|Total: 6,00||BARRA 13||5,30||0,70 (1,26 / 1,30 ajustado e reaproveitado)|Total: 6,00||BARRA 14||4,20||1,80|Total: 6,00||BARRA 15||4,00||2,00 (1,80 + ajuste)|Total: 6,00||BARRA 16||3,65||2,35 (2,20 ajustado)|Total: 6,00||BARRA 17||2,80||1,30||1,90 (1,80 ajustado)|Total: 6,00||BARRA 18||2,70||1,60||1,70 (1,60 + ajuste)|Total: 6,00||BARRA 19 (fechamento)||13,75  corte em 2 barras de 6 m + sobra mínima||Ajustes finais com:||1,26||1,30||1,60||Sobra final estimada: ~0,30 a 0,40 m"
+      },
+      "total_pedido": {
+        "valor_total_pedido": 25936.32
+      },
+      "nota_fiscal": {
+        "nNF": "",
+        "dEmi": "",
+        "hEmi": "",
+        "cChaveNFe": ""
+      }
+    }
+  },
+  "20485": {
+    "pedido_venda_produto": {
+      "cabecalho": {
+        "bloqueado": "",
+        "codigo_cenario_impostos": "9764259847",
+        "codigo_cliente": 9765167809,
+        "codigo_parcela": "T54",
+        "codigo_pedido": 10318850023,
+        "data_previsao": "24/02/2026",
+        "etapa": "20",
+        "numero_pedido": "20485",
+        "origem_pedido": "ERP",
+        "qtde_parcelas": 1,
+        "quantidade_itens": 1
+      },
+      "infoCadastro": {
+        "autorizado": "N",
+        "cImpAPI": "N",
+        "cancelado": "N",
+        "dAlt": "12/02/2026",
+        "dFat": "",
+        "dInc": "12/02/2026",
+        "denegado": "N",
+        "devolvido": "N",
+        "devolvido_parcial": "N",
+        "faturado": "N",
+        "hAlt": "07:19:20",
+        "hFat": "",
+        "hInc": "07:15:09",
+        "uAlt": "P000924136",
+        "uFat": "",
+        "uInc": "P000924136"
+      },
+      "informacoes_adicionais": {
+        "codProj": 9779703251,
+        "codVend": 9877796676,
+        "vendedor_nome": "Vendedor 9877796676",
+        "codigo_categoria": "1.01.01",
+        "categoria_nome": "Receitas Diretas",
+        "codigo_conta_corrente": 9770899623,
+        "consumidor_final": "S",
+        "enviar_email": "N",
+        "enviar_pix": "N",
+        "numero_pedido_cliente": "3701777",
+        "utilizar_emails": "josemaria@alunorte.net, debora.freitas@hidro.com, larissa.marinho@albras.net"
+      },
+      "lista_parcelas": {
+        "parcela": [
+          {
+            "data_vencimento": "26/03/2026",
+            "numero_parcela": 1,
+            "percentual": 100.0,
+            "quantidade_dias": 30,
+            "valor": 510.0
+          }
+        ]
+      },
+      "observacoes": {
+        "obs_venda": "NÃO ATRASAR MATERIAL!!! ||MATERIAL NÃO PODE SAIR SEM CERTIFICADO!!! ||CHAPA PERFURADA ACO CARBONO; NORMA ACO: SAE 1020 GALVANIZADO; DIMENSOES|CHAPA: 2000X1000 MM; ESPESSURA: 1,25MM; DISTANCIA ENTRE CENTROS: 18MM;|FORMATO FURO: CIRCULAR; DIMENSOES FURO: 10MM; DISPOSICAO FUROS:|ALTERNADO TRANSVERSAL; MEDIDA MARGEM: 20MM"
+      },
+      "total_pedido": {
+        "valor_total_pedido": 510.0
+      },
+      "nota_fiscal": {
+        "nNF": "",
+        "dEmi": "",
+        "hEmi": "",
+        "cChaveNFe": ""
+      }
+    }
+  },
+  "20486": {
+    "pedido_venda_produto": {
+      "cabecalho": {
+        "bloqueado": "N",
+        "codigo_cenario_impostos": "9765981297",
+        "codigo_cliente": 9876928185,
+        "codigo_parcela": "T54",
+        "codigo_pedido": 10318851551,
+        "data_previsao": "19/02/2026",
+        "etapa": "00",
+        "numero_pedido": "20486",
+        "origem_pedido": "ERP",
+        "qtde_parcelas": 1,
+        "quantidade_itens": 0
+      },
+      "infoCadastro": {
+        "autorizado": "N",
+        "cImpAPI": "N",
+        "cancelado": "N",
+        "dAlt": "12/02/2026",
+        "dFat": "",
+        "dInc": "12/02/2026",
+        "denegado": "N",
+        "devolvido": "N",
+        "devolvido_parcial": "N",
+        "faturado": "N",
+        "hAlt": "07:26:25",
+        "hFat": "",
+        "hInc": "07:23:17",
+        "uAlt": "P000720539",
+        "uFat": "",
+        "uInc": "P000720539"
+      },
+      "informacoes_adicionais": {
+        "codProj": 0,
+        "codVend": 9764301580,
+        "vendedor_nome": "Vendedor 9764301580",
+        "codigo_categoria": "1.01.01",
+        "categoria_nome": "Receitas Diretas",
+        "codigo_conta_corrente": 9770899623,
+        "consumidor_final": "N",
+        "enviar_email": "N",
+        "enviar_pix": "N",
+        "numero_pedido_cliente": "",
+        "utilizar_emails": "marcela.campos@boskalis.com, marciel.batalha@boskalis.com, bdb@boskalis.nl"
+      },
+      "lista_parcelas": {
+        "parcela": []
+      },
+      "observacoes": {
+        "obs_venda": ""
+      },
+      "total_pedido": {
+        "valor_total_pedido": 0.0
+      },
+      "nota_fiscal": {
+        "nNF": "",
+        "dEmi": "",
+        "hEmi": "",
+        "cChaveNFe": ""
+      }
+    }
+  }
+}

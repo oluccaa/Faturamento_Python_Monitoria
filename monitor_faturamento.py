@@ -58,7 +58,7 @@ class BillingApplication:
     def _fetch_nfe_map(self, data_inicio: str, data_fim: str) -> Dict[str, dict]:
         """
         Busca TODAS as Notas Fiscais do período e cria um mapa { nIdPedido: DadosNF }.
-        Isso permite cruzamento O(1) durante o processamento dos pedidos.
+        Otimizado para garantir o vínculo correto utilizando cabeçalho e itens como fallback.
         """
         logger.info(f"🔎 Indexando Notas Fiscais (NFe) de {data_inicio} a {data_fim}...")
         nf_map = {}
@@ -73,28 +73,35 @@ class BillingApplication:
                     total_pages = data.get("total_de_paginas", 1)
                     nfs = data.get("nfCadastro", [])
                     
+                    if not nfs:
+                        break
+
                     for nf in nfs:
-                        # Tenta encontrar o vínculo com o Pedido na lista de detalhes (det)
+                        # 1. Tenta obter o vínculo principal pelo bloco 'compl'
+                        compl = nf.get("compl", {})
+                        n_id_pedido = str(compl.get("nIdPedido", "0")).strip()
+                        
+                        # 2. Fallback: Se não encontrar no compl, verifica nos detalhes (itens)
                         det = nf.get("det", [])
-                        n_id_pedido = ""
+                        if (n_id_pedido == "0" or not n_id_pedido) and isinstance(det, list) and det:
+                            # Tenta capturar o ID do pedido vinculado ao primeiro item da nota
+                            n_id_pedido = str(det[0].get("nIdPedido", "0")).strip()
                         
-                        if isinstance(det, list) and len(det) > 0:
-                            n_id_pedido = str(det[0].get("nIdPedido", "")).strip()
-                        
-                        # Se encontrou vínculo válido, indexa os dados limpos da nota
+                        # 3. Se encontrou um vínculo válido e diferente de zero, indexa a nota
                         if n_id_pedido and n_id_pedido != "0":
+                            # Utiliza o serviço de domínio para limpar apenas os campos desejados
                             nf_map[n_id_pedido] = self.domain.clean_nf_data(nf)
                     
                     logger.debug(f"   📑 NFs Pág {page}/{total_pages} indexadas.")
                     page += 1
-                    time.sleep(0.1) # Rate limit suave
+                    time.sleep(0.1) # Respeita o rate limit da API
                     
                 except Exception as e:
-                    logger.warning(f"   ⚠️ Falha ao buscar NFs Pág {page}: {e}. Tentando próxima...")
+                    logger.warning(f"   ⚠️ Falha ao processar página {page} de NFs: {e}. Pulando...")
                     page += 1 
                     
         except Exception as e:
-            logger.error(f"❌ Erro crítico ao indexar NFs: {e}. O relatório seguirá sem dados fiscais.")
+            logger.error(f"❌ Erro crítico ao indexar NFs: {e}. O processo continuará sem dados fiscais.")
         
         logger.info(f"✅ Indexação Fiscal Concluída: {len(nf_map)} vínculos encontrados.")
         return nf_map

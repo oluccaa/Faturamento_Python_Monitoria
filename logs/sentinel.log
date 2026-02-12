@@ -630,3 +630,29 @@
 2026-02-11 17:03:46 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado: faturamento_01_12_2025.json
 2026-02-11 17:03:46 | INFO     | [monitor_faturamento:_save_results] | 📝 3706 novos IDs adicionados ao histórico de processados.
 2026-02-11 17:03:46 | INFO     | [monitor_faturamento:run_extraction] | 🏁 Finalizado em 329.22s. Total Extraído: 3358. Ignorados: 6
+2026-02-12 07:39:26 | INFO     | [monitor_faturamento:__init__] | 🔧 Inicializando Aplicação de Monitoria de Faturamento...
+2026-02-12 07:39:26 | INFO     | [monitor_faturamento:__init__] | 🛡️  Filtro de Bloqueio Ativo: 4208 IDs ignorados.
+2026-02-12 07:39:26 | INFO     | [monitor_faturamento:run_extraction] | 🚀 Iniciando Extração Completa: 01/12/2025 até 12/02/2026
+2026-02-12 07:39:26 | INFO     | [monitor_faturamento:_fetch_nfe_map] | 🔎 Indexando Notas Fiscais (NFe) de 01/12/2025 a 12/02/2026...
+2026-02-12 07:39:54 | INFO     | [monitor_faturamento:__init__] | 🔧 Inicializando Aplicação de Monitoria de Faturamento...
+2026-02-12 07:39:54 | INFO     | [monitor_faturamento:__init__] | 🛡️  Filtro de Bloqueio Ativo: 4208 IDs ignorados.
+2026-02-12 07:39:54 | INFO     | [monitor_faturamento:run_extraction] | 🚀 Iniciando Extração Completa: 01/02/2026 até 12/02/2026
+2026-02-12 07:39:54 | INFO     | [monitor_faturamento:_fetch_nfe_map] | 🔎 Indexando Notas Fiscais (NFe) de 01/02/2026 a 12/02/2026...
+2026-02-12 07:40:10 | INFO     | [monitor_faturamento:_fetch_nfe_map] | ✅ Indexação Fiscal Concluída: 0 vínculos encontrados.
+2026-02-12 07:40:20 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 1/13 | Capturados: 0 | Ignorados: 100
+2026-02-12 07:40:27 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 2/13 | Capturados: 0 | Ignorados: 200
+2026-02-12 07:40:34 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 3/13 | Capturados: 0 | Ignorados: 300
+2026-02-12 07:40:39 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 4/13 | Capturados: 0 | Ignorados: 400
+2026-02-12 07:40:43 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 5/13 | Capturados: 0 | Ignorados: 500
+2026-02-12 07:40:48 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 6/13 | Capturados: 0 | Ignorados: 600
+2026-02-12 07:40:53 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 7/13 | Capturados: 0 | Ignorados: 700
+2026-02-12 07:40:57 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 8/13 | Capturados: 0 | Ignorados: 800
+2026-02-12 07:41:04 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 9/13 | Capturados: 0 | Ignorados: 900
+2026-02-12 07:41:11 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 10/13 | Capturados: 0 | Ignorados: 1000
+2026-02-12 07:41:16 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 11/13 | Capturados: 0 | Ignorados: 1100
+2026-02-12 07:41:21 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 12/13 | Capturados: 0 | Ignorados: 1200
+2026-02-12 07:41:26 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pedidos Pág 13/13 | Capturados: 7 | Ignorados: 1259
+2026-02-12 07:41:26 | INFO     | [monitor_faturamento:_save_results] | 💾 Salvando dados (FINAL) no disco...
+2026-02-12 07:41:28 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado: faturamento_01_02_2026.json
+2026-02-12 07:41:28 | INFO     | [monitor_faturamento:_save_results] | 📝 7 novos IDs adicionados ao histórico de processados.
+2026-02-12 07:41:28 | INFO     | [monitor_faturamento:run_extraction] | 🏁 Finalizado em 93.73s. Total Extraído: 7. Ignorados: 1259
