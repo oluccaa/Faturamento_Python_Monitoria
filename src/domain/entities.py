@@ -13,7 +13,54 @@ def _to_decimal(value: Any) -> Decimal:
     except (ValueError, TypeError, ArithmeticError):
         return Decimal("0.00")
 
-# --- NOVAS CLASSES PARA ITENS (Necessário para Validação) ---
+# --- SUB-ENTIDADES ---
+
+@dataclass
+class Cabecalho:
+    bloqueado: str = ""
+    codigo_cenario_impostos: str = ""
+    codigo_cliente: int = 0
+    codigo_parcela: str = ""
+    codigo_pedido: int = 0
+    data_previsao: str = ""
+    etapa: str = ""
+    numero_pedido: str = ""
+    origem_pedido: str = ""
+    qtde_parcelas: int = 0
+    quantidade_itens: int = 0
+
+@dataclass
+class InfoCadastro:
+    autorizado: str = ""
+    cImpAPI: str = ""
+    cancelado: str = ""
+    dAlt: str = ""
+    dFat: str = ""
+    dInc: str = ""
+    denegado: str = ""
+    devolvido: str = ""
+    devolvido_parcial: str = ""
+    faturado: str = ""
+    hAlt: str = ""
+    hFat: str = ""
+    hInc: str = ""
+    uAlt: str = ""
+    uFat: str = ""
+    uInc: str = ""
+
+@dataclass
+class InformacoesAdicionais:
+    codProj: int = 0
+    codVend: int = 0
+    vendedor_nome: str = ""
+    codigo_categoria: str = ""
+    categoria_nome: str = ""
+    codigo_conta_corrente: int = 0
+    consumidor_final: str = ""
+    enviar_email: str = ""
+    enviar_pix: str = ""
+    numero_pedido_cliente: str = ""
+    utilizar_emails: str = ""
 
 @dataclass
 class ProdutoItem:
@@ -34,72 +81,8 @@ class ProdutoItem:
 
 @dataclass
 class ItemPedido:
-    ide: dict = field(default_factory=dict) # Pode conter indices como sequencia
+    ide: Dict[str, Any] = field(default_factory=dict)
     produto: ProdutoItem = field(default_factory=ProdutoItem)
-
-# --- FIM DAS NOVAS CLASSES ---
-
-@dataclass
-class Cabecalho:
-    bloqueado: str = "N"
-    codigo_cenario_impostos: str = ""
-    codigo_cliente: int = 0
-    codigo_parcela: str = ""
-    codigo_pedido: int = 0
-    data_previsao: str = ""
-    etapa: str = ""
-    numero_pedido: str = ""
-    origem_pedido: str = ""
-    qtde_parcelas: int = 0
-    quantidade_itens: int = 0
-
-    def __post_init__(self):
-        try:
-            self.codigo_cliente = int(self.codigo_cliente or 0)
-            self.codigo_pedido = int(self.codigo_pedido or 0)
-            self.qtde_parcelas = int(self.qtde_parcelas or 0)
-        except ValueError:
-            pass
-
-@dataclass
-class InfoCadastro:
-    autorizado: str = "N"
-    cImpAPI: str = "N"
-    cancelado: str = "N"
-    dAlt: str = ""
-    dFat: str = ""
-    dInc: str = ""
-    denegado: str = "N"
-    devolvido: str = "N"
-    devolvido_parcial: str = "N"
-    faturado: str = "N"
-    hAlt: str = ""
-    hFat: str = ""
-    hInc: str = ""
-    uAlt: str = ""
-    uFat: str = ""
-    uInc: str = ""
-
-    @property
-    def status_real(self) -> str:
-        if self.cancelado == "S": return "Cancelado"
-        if self.devolvido == "S": return "Devolvido"
-        if self.faturado == "S": return "Faturado"
-        return "Em Aberto"
-
-@dataclass
-class InformacoesAdicionais:
-    codProj: int = 0
-    codVend: int = 0
-    vendedor_nome: str = "N/D"
-    codigo_categoria: str = ""
-    categoria_nome: str = "N/D"
-    codigo_conta_corrente: int = 0
-    consumidor_final: str = "N"
-    enviar_email: str = "N"
-    enviar_pix: str = "N"
-    numero_pedido_cliente: str = ""
-    utilizar_emails: str = ""
 
 @dataclass
 class Parcela:
@@ -107,14 +90,7 @@ class Parcela:
     numero_parcela: int = 0
     percentual: float = 0.0
     quantidade_dias: int = 0
-    valor: Decimal = field(default_factory=lambda: Decimal("0.00"))
-
-    def __post_init__(self):
-        self.valor = _to_decimal(self.valor)
-        try:
-            self.numero_parcela = int(self.numero_parcela or 0)
-        except ValueError:
-            pass
+    valor: float = 0.0
 
 @dataclass
 class ListaParcelas:
@@ -134,34 +110,54 @@ class TotalPedido:
 @dataclass
 class NotaFiscalRefinada:
     nNF: str = ""
+    serie: str = ""
     dEmi: str = ""
     hEmi: str = ""
     cChaveNFe: str = ""
+    valor_total_nf: Decimal = field(default_factory=lambda: Decimal("0.00"))
+
+    def __post_init__(self):
+        self.valor_total_nf = _to_decimal(self.valor_total_nf)
+
+# --- ENTIDADE RAIZ ---
 
 @dataclass
 class PedidoRefinado:
+    # Identificadores principais para busca rápida
+    numero_pedido: str = ""
+    codigo_pedido: int = 0
+    
+    # Blocos de dados
     cabecalho: Cabecalho = field(default_factory=Cabecalho)
     infoCadastro: InfoCadastro = field(default_factory=InfoCadastro)
     informacoes_adicionais: InformacoesAdicionais = field(default_factory=InformacoesAdicionais)
-    det: List[ItemPedido] = field(default_factory=list) # ADICIONADO AQUI
+    
+    # Detalhes e Itens
+    det: List[Dict] = field(default_factory=list) # Lista simplificada de itens
     lista_parcelas: ListaParcelas = field(default_factory=ListaParcelas)
     observacoes: Observacoes = field(default_factory=Observacoes)
+    
+    # Totais
     total_pedido: TotalPedido = field(default_factory=TotalPedido)
+    
+    # Dados Fiscais e Controle
     nota_fiscal: NotaFiscalRefinada = field(default_factory=NotaFiscalRefinada)
-    hash_integridade: Optional[str] = None # ADICIONADO PARA O CHECK
+    
+    # Campos de Auditoria do Processo ETL
+    status_processo: str = "PENDENTE"  # PENDENTE, FATURADO_COMPLETO, DIVERGENTE, SEM_NF
+    hash_integridade: Optional[str] = None # Hash MD5 para validar se Pedido == NF
 
     def to_dict(self) -> Dict[str, Any]:
-        """Converte a dataclass para dicionário, tratando Decimals."""
+        """Converte a dataclass para dicionário, tratando Decimals para JSON serializable."""
         data = asdict(self)
         
-        # Função auxiliar interna para varrer o dict gerado pelo asdict e corrigir tipos
         def fix_types(obj):
             if isinstance(obj, dict):
                 return {k: fix_types(v) for k, v in obj.items()}
             elif isinstance(obj, list):
-                return [fix_types(i) for i in obj]
+                return [fix_types(v) for v in obj]
             elif isinstance(obj, Decimal):
                 return float(obj)
             return obj
-
+            
         return fix_types(data)

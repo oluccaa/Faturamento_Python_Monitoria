@@ -1,32 +1,26 @@
 import requests
+import time
 from typing import List, Dict, Any, Optional, Union
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-# Fallback para evitar erro de import circular se config falhar
+# Tenta carregar configs, fallback se falhar
 try:
     from src.config import CONFIG
     OMIE_APP_KEY = CONFIG.OMIE_APP_KEY
     OMIE_APP_SECRET = CONFIG.OMIE_APP_SECRET
-    TIMEOUT_REQUEST = CONFIG.TIMEOUT_REQUEST
-    APP_NAME = CONFIG.APP_NAME
-    VERSION = CONFIG.VERSION
+    TIMEOUT_REQUEST = 90  # Timeout alto para garantir downloads grandes
 except ImportError:
     OMIE_APP_KEY = ""
     OMIE_APP_SECRET = ""
-    TIMEOUT_REQUEST = 60
-    APP_NAME = "OmieClient"
-    VERSION = "1.0"
+    TIMEOUT_REQUEST = 90
 
 from src.infrastructure.custom_logging import logger
 
 class OmieClient:
     """
-    Cliente HTTP Padronizado para API Omie (v1).
-    Implementa Connection Pooling, Auto-Retries e tratamento de erros nativo.
+    Cliente HTTP Otimizado para ETL (Extração em Lote).
     """
-    
-    # Endpoints Padrão (Imutáveis)
     ENDPOINT_PEDIDOS = "https://app.omie.com.br/api/v1/produtos/pedido/"
     ENDPOINT_NFE = "https://app.omie.com.br/api/v1/produtos/nfconsultar/"
     
@@ -34,124 +28,92 @@ class OmieClient:
         self.api_key = OMIE_APP_KEY
         self.api_secret = OMIE_APP_SECRET
         
-        # Configuração de Resiliência (Retry Strategy)
+        # Estratégia de Retry Agressiva para erros de servidor
         retry_strategy = Retry(
-            total=3,
-            backoff_factor=1,  # Espera 1s, 2s, 4s entre tentativas
+            total=5,
+            backoff_factor=2, # 2s, 4s, 8s, 16s...
             status_forcelist=[429, 500, 502, 503, 504],
             allowed_methods=["POST"]
         )
         adapter = HTTPAdapter(max_retries=retry_strategy)
 
-        # OTIMIZAÇÃO: Session para reutilização de conexão TCP/SSL (Keep-Alive)
         self.session = requests.Session()
         self.session.mount("https://", adapter)
         self.session.mount("http://", adapter)
-        
         self.session.headers.update({
             'Content-Type': 'application/json',
-            'User-Agent': f'{APP_NAME}/{VERSION} (Python Service)'
+            'User-Agent': 'Python ETL Service/1.0'
         })
 
     def request(self, endpoint: str, call: str, param: Optional[Union[Dict, List]] = None) -> Dict[str, Any]:
         """
-        Método 'Core' que segue estritamente a estrutura de envelope JSON da Omie.
+        Executa a requisição POST padrão Omie com tratamento de erros de negócio.
         """
-        # Padrão Omie: 'param' deve ser sempre uma lista de objetos.
-        safe_param = [param] if isinstance(param, dict) else (param or [])
-
         payload = {
             "call": call,
             "app_key": self.api_key,
             "app_secret": self.api_secret,
-            "param": safe_param
+            "param": [param] if isinstance(param, dict) else (param or [])
         }
 
         try:
-            response = self.session.post(
-                endpoint, 
-                json=payload, 
-                timeout=TIMEOUT_REQUEST
-            )
+            # THROTTLING: Pausa obrigatória para evitar sobrecarga (Erro 500/429)
+            time.sleep(0.4) 
             
+            response = self.session.post(endpoint, json=payload, timeout=TIMEOUT_REQUEST)
             response.raise_for_status()
             
             data = response.json()
             
-            # Tratamento de Erro Lógico da Omie (Status 200, mas com falha de negócio)
+            # Verifica erros lógicos da API (ex: página não existe, chave inválida)
             if "faultstring" in data:
-                error_msg = data.get("faultstring")
-                # Não logamos como erro se for apenas "Não existem registros", pois é comum em paginação final
-                if "não existem registros" in str(error_msg).lower():
-                    logger.debug(f"ℹ️ Fim da paginação ou sem dados para {call}: {error_msg}")
-                    return {"total_de_paginas": 0, "registros": [], "nfCadastro": []} # Retorno seguro vazio
+                error_msg = data.get("faultstring", "")
                 
-                logger.error(f"⛔ Erro de Negócio Omie [{call}]: {error_msg}")
-                raise Exception(f"Omie API Logical Error: {error_msg}")
+                # "ERROR: Não existem registros..." é normal no fim da paginação
+                if "não existem registros" in str(error_msg).lower():
+                    return {
+                        "total_de_paginas": 0, 
+                        "registros": [], 
+                        "pedido_venda_produto": [], 
+                        "nfCadastro": []
+                    }
+                
+                logger.error(f"⛔ Erro Lógico Omie [{call}]: {error_msg}")
+                raise Exception(f"Omie Logic Error: {error_msg}")
                 
             return data
 
-        except requests.exceptions.Timeout:
-            logger.error(f"⏱️ Timeout na chamada {call} (Limite: {TIMEOUT_REQUEST}s).")
-            raise
-        except requests.exceptions.HTTPError as e:
-            logger.error(f"📡 Erro HTTP na Omie ({call}): {e.response.status_code} - {e.response.text}")
-            raise
-        except requests.exceptions.RequestException as e:
-            logger.error(f"🌐 Falha Crítica de Conexão em {call}: {e}")
-            raise
         except Exception as e:
-            logger.error(f"❌ Erro Inesperado no Cliente Omie ({call}): {e}")
+            logger.error(f"❌ Falha na requisição [{call}]: {str(e)[:150]}...")
             raise
 
-    # -------------------------------------------------------------------------
-    # Métodos de Domínio (Abstração para chamadas do Sistema)
-    # -------------------------------------------------------------------------
-    
+    # --- MÉTODOS ESPECÍFICOS DE EXTRAÇÃO ---
+
     def listar_pedidos(self, pagina: int, data_de: str, data_ate: str) -> dict:
         """
-        Executa a listagem de pedidos de produtos faturados/venda.
+        Baixa página de PEDIDOS. 
+        Paginação: 50 itens (Pedidos são leves).
         """
         param = {
             "pagina": pagina,
-            "registros_por_pagina": 50,
+            "registros_por_pagina": 50, 
             "apenas_importado_api": "N",
             "filtrar_por_data_de": data_de,
             "filtrar_por_data_ate": data_ate,
-            "apenas_resumo": "N"
+            "apenas_resumo": "N" # Traz os itens para validação futura
         }
         return self.request(self.ENDPOINT_PEDIDOS, "ListarPedidos", param)
 
     def listar_nfs(self, pagina: int, data_de: str, data_ate: str) -> dict:
         """
-        Executa a listagem de Notas Fiscais (NFe) no período.
+        Baixa página de NOTAS FISCAIS.
+        Paginação: 20 itens (NFs são pesadas, contêm XML completo).
         """
         param = {
             "nPagina": pagina,
-            "nRegPorPagina": 50,
+            "nRegPorPagina": 20, # Reduzido para evitar Timeout/500
             "apenas_importado_api": "N",
             "dEmiInicial": data_de,
             "dEmiFinal": data_ate,
         }
         return self.request(self.ENDPOINT_NFE, "ListarNFes", param)
-
-    def consultar_nfe_por_pedido(self, codigo_pedido: int) -> dict:
-        """
-        Busca a NFe especificamente ligada a um ID de Pedido de Venda.
-        Utilizado para enriquecer pedidos faturados que não trazem dados da NF na listagem de pedidos.
-        """
-        param = {
-            "nPagina": 1,
-            "nRegPorPagina": 1,
-            "apenas_importado_api": "N",
-            "nCodPed": codigo_pedido  # Filtro chave para vincular Pedido -> NF
-        }
-        
-        # O endpoint de consulta de NF usa a chamada ListarNFes
-        response = self.request(self.ENDPOINT_NFE, "ListarNFes", param)
-        
-        # Se houver retorno válido, pega o primeiro item da lista 'nfCadastro'
-        if response and "nfCadastro" in response and len(response["nfCadastro"]) > 0:
-            return response["nfCadastro"][0]
-            
-        return {}
