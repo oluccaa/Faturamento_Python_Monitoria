@@ -3,16 +3,24 @@ import sys
 import copy
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
-from src.config import CONFIG
+from typing import Optional
+
+# Tenta importar CONFIG, mas define falbacks se falhar (evita crash em import circular)
+try:
+    from src.config import CONFIG
+    LOG_FILE_PATH = CONFIG.LOG_FILE
+    APP_NAME = getattr(CONFIG, "APP_NAME", "AppPadrao")
+except ImportError:
+    LOG_FILE_PATH = Path("logs/app.log")
+    APP_NAME = "AppFallback"
 
 # ==============================================================================
-# INFRAESTRUTURA: SISTEMA DE LOGS (Refatorado)
+# INFRAESTRUTURA: SISTEMA DE LOGS (Refatorado & Otimizado)
 # ==============================================================================
 
 class ColoredConsoleFormatter(logging.Formatter):
     """
-    Formatador de alta performance para o console.
-    Aplica cores apenas nos níveis e metadados, sem poluir a mensagem original.
+    Formatador de alta performance para o console com cache de formatters.
     """
     
     # Definição de Cores ANSI
@@ -23,91 +31,77 @@ class ColoredConsoleFormatter(logging.Formatter):
     BOLD_RED = "\x1b[31;1m"
     RESET = "\x1b[0m"
 
-    # Formato base para o console (mais compacto que o do arquivo)
-    # Ex: 14:00:01 | INFO     | (main.py:45) | Mensagem...
+    # Formato base
     BASE_FMT = "%(asctime)s | %(levelname)-8s | (%(filename)s:%(lineno)d) | %(message)s"
 
     def __init__(self):
-        super().__init__(fmt=self.BASE_FMT, datefmt='%H:%M:%S')
+        super().__init__(datefmt='%H:%M:%S')
         
-        # Pré-compila os formatos para evitar processamento a cada log (Ganho de Performance)
-        self.FORMATS = {
-            logging.DEBUG: self.GREY + self.BASE_FMT + self.RESET,
-            logging.INFO: self.GREEN + self.BASE_FMT + self.RESET,
-            logging.WARNING: self.YELLOW + self.BASE_FMT + self.RESET,
-            logging.ERROR: self.RED + self.BASE_FMT + self.RESET,
-            logging.CRITICAL: self.BOLD_RED + self.BASE_FMT + self.RESET,
+        # OTIMIZAÇÃO: Pré-compila os formatters INTEIROS, não apenas as strings.
+        # Assim não recriamos objetos logging.Formatter a cada log (Ganho de CPU).
+        self.FORMATTERS = {
+            logging.DEBUG: logging.Formatter(self.GREY + self.BASE_FMT + self.RESET, datefmt='%H:%M:%S'),
+            logging.INFO: logging.Formatter(self.GREEN + self.BASE_FMT + self.RESET, datefmt='%H:%M:%S'),
+            logging.WARNING: logging.Formatter(self.YELLOW + self.BASE_FMT + self.RESET, datefmt='%H:%M:%S'),
+            logging.ERROR: logging.Formatter(self.RED + self.BASE_FMT + self.RESET, datefmt='%H:%M:%S'),
+            logging.CRITICAL: logging.Formatter(self.BOLD_RED + self.BASE_FMT + self.RESET, datefmt='%H:%M:%S'),
         }
 
     def format(self, record):
-        # IMPORTANTE: Criamos uma cópia do record para não injetar 
-        # códigos de cor no LogRecord original. Se não fizermos isso, 
-        # o RotatingFileHandler (arquivo) acabaria recebendo cores também,
-        # sujando o arquivo de texto com caracteres estranhos.
+        # A cópia é necessária para não colorir o log que vai para o arquivo
         record_copy = copy.copy(record)
         
-        log_fmt = self.FORMATS.get(record_copy.levelno, self.BASE_FMT)
-        formatter = logging.Formatter(log_fmt, datefmt='%H:%M:%S')
+        # Busca o formatter pré-compilado ou usa o padrão (Debug/Grey)
+        formatter = self.FORMATTERS.get(record.levelno, self.FORMATTERS[logging.DEBUG])
+        
         return formatter.format(record_copy)
 
 def setup_logger() -> logging.Logger:
     """
     Configura o Logger Singleton da Aplicação.
     """
-    # Recupera ou cria o logger baseado no nome da app definido no CONFIG
-    logger_name = getattr(CONFIG, "APP_NAME", "AppPadrao")
-    logger = logging.getLogger(logger_name)
+    logger = logging.getLogger(APP_NAME)
     
-    # Define o nível GLOBAL como DEBUG (os handlers filtrarão depois)
-    logger.setLevel(logging.DEBUG)
-
-    # Evita duplicação de logs se a função for chamada múltiplas vezes (hot reload)
+    # Se já tiver handlers configurados, retorna o existente (Singleton Pattern real)
     if logger.hasHandlers():
-        logger.handlers.clear()
-
-    # Define o formatter do arquivo (Completo e limpo, sem cores)
-    file_formatter = logging.Formatter(
-        '%(asctime)s | %(levelname)-8s | [%(module)s:%(funcName)s] | %(message)s',
-        datefmt='%Y-%m-%d %H:%M:%S'
-    )
+        return logger
+        
+    logger.setLevel(logging.DEBUG)
+    logger.propagate = False  # Evita duplicar logs no console raiz do Python
 
     # --- 1. CONFIGURAÇÃO DO ARQUIVO (File Handler) ---
     try:
-        log_file = CONFIG.LOG_FILE
-        log_dir = log_file.parent
-        
-        # Criação segura do diretório
+        log_dir = LOG_FILE_PATH.parent
         log_dir.mkdir(parents=True, exist_ok=True)
 
+        file_formatter = logging.Formatter(
+            '%(asctime)s | %(levelname)-8s | [%(module)s:%(funcName)s] | %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        )
+
         file_handler = RotatingFileHandler(
-            log_file,
+            LOG_FILE_PATH,
             maxBytes=20 * 1024 * 1024,  # 20 MB
-            backupCount=10,             # Mantém 10 arquivos antigos
+            backupCount=10,             # Mantém 10 arquivos
             encoding='utf-8',
-            delay=True                  # Cria o arquivo só ao escrever (Lazy)
+            delay=True                  # Cria arquivo só ao escrever
         )
         
         file_handler.setFormatter(file_formatter)
-        # O nível do arquivo geralmente é INFO para não "encher" o disco com DEBUG
-        file_handler.setLevel(logging.INFO) 
-        
+        file_handler.setLevel(logging.INFO) # Arquivo recebe INFO e acima
         logger.addHandler(file_handler)
 
     except (PermissionError, OSError) as e:
-        # Fallback: Se não conseguir criar arquivo, avisa no console mas não quebra a app
-        sys.stderr.write(f"⚠️  AVISO DE INFRA: Não foi possível criar log em arquivo: {e}\n")
+        sys.stderr.write(f"⚠️  [LOGGER] Falha ao criar arquivo de log: {e}\n")
 
     # --- 2. CONFIGURAÇÃO DO CONSOLE (Stream Handler) ---
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(ColoredConsoleFormatter())
-    
-    # O console mostra tudo (DEBUG), útil para desenvolvimento
-    console_handler.setLevel(logging.DEBUG)
+    console_handler.setLevel(logging.DEBUG) # Console mostra tudo
     
     logger.addHandler(console_handler)
 
-    # Log de inicialização para confirmar que o sistema subiu
-    logger.debug(f"Logger inicializado. Gravando em: {CONFIG.LOG_FILE}")
+    logger.debug(f"Logger inicializado. Gravando em: {LOG_FILE_PATH}")
 
     return logger
 

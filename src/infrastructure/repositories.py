@@ -6,8 +6,16 @@ from typing import Set, Dict, List, Any, Union, Optional
 from decimal import Decimal
 from datetime import datetime, date
 
-from src.infrastructure.custom_logging import logger
-from src.config import CONFIG
+# Tenta importar logger e config, com fallback para testes isolados
+try:
+    from src.infrastructure.custom_logging import logger
+    from src.config import CONFIG
+except ImportError:
+    import logging
+    logger = logging.getLogger("RepoFallback")
+    class ConfigMock:
+        OUTPUT_DIR = Path("data/output")
+    CONFIG = ConfigMock()
 
 class JsonRepository:
     """
@@ -16,7 +24,7 @@ class JsonRepository:
     """
 
     def __init__(self, base_dir: Union[str, Path] = "."):
-        self.base_dir = Path(base_dir)
+        self.base_dir = Path(base_dir).resolve()
         self._cache: Dict[str, Any] = {} # Cache para evitar I/O excessivo
 
     def _encoder(self, obj: Any) -> Any:
@@ -36,9 +44,14 @@ class JsonRepository:
         Executa a escrita atômica via substituição de arquivo temporário.
         """
         # Garante estrutura de pastas antes da escrita
-        path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            path.parent.mkdir(parents=True, exist_ok=True)
+        except OSError as e:
+            logger.error(f"❌ Falha ao criar diretório {path.parent}: {e}")
+            raise
 
-        temp_path = path.with_suffix(f".tmp_{os.getpid()}") # Sufixo com PID para segurança em concorrência
+        # Nome temporário seguro
+        temp_path = path.with_suffix(f".tmp_{os.getpid()}_{datetime.now().microsecond}") 
         
         try:
             with open(temp_path, 'w', encoding='utf-8') as f:
@@ -55,7 +68,7 @@ class JsonRepository:
             # Operação atômica no OS (Atomic Rename)
             temp_path.replace(path)
             
-            # Atualiza o cache interno se este arquivo for lido novamente
+            # Atualiza o cache interno se a chave for conhecida (nome do arquivo)
             self._cache[path.name] = copy.deepcopy(data)
             
         except Exception as e:
@@ -68,11 +81,17 @@ class JsonRepository:
     def load_filter_set(self, filename: str) -> Set[str]:
         """
         Lê uma lista JSON e converte em Set para busca O(1).
+        Usa Cache de Memória se disponível.
         """
-        # Tenta recuperar do cache primeiro
-        if filename in self._cache and isinstance(self._cache[filename], (list, set)):
-            return set(str(i) for i in self._cache[filename])
+        # 1. Tenta recuperar do cache primeiro (Fast Path)
+        if filename in self._cache:
+            cached_data = self._cache[filename]
+            if isinstance(cached_data, set):
+                return cached_data
+            if isinstance(cached_data, list):
+                return set(str(i) for i in cached_data)
 
+        # 2. Caminho do arquivo
         path = self.base_dir / filename
         if not path.exists():
             return set()
@@ -80,12 +99,16 @@ class JsonRepository:
         try:
             with open(path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
+                
                 if not isinstance(data, list):
+                    logger.warning(f"⚠️ Arquivo {filename} deveria ser uma lista, mas é {type(data)}. Ignorando.")
                     return set()
                 
                 # Sanitização: remove vazios e converte para string
                 result = {str(item).strip() for item in data if item is not None}
-                self._cache[filename] = list(result)
+                
+                # Atualiza Cache como SET para performance
+                self._cache[filename] = result
                 return result
                 
         except (json.JSONDecodeError, Exception) as e:
@@ -113,6 +136,12 @@ class JsonRepository:
                 if isinstance(data, dict):
                     self._cache[filename] = copy.deepcopy(data)
                     return data
+                
+                # Se for lista mas esperava dict (ex: vendedores.json as vezes vem como lista)
+                if isinstance(data, list):
+                     logger.warning(f"⚠️ Arquivo {filename} é uma lista, retornando vazio em load_dict.")
+                     return {} # Caller deve tratar se quiser lista
+
                 return {}
         except Exception as e:
             logger.error(f"❌ Erro de leitura no JSON {filename}: {e}")
@@ -127,15 +156,22 @@ class JsonRepository:
     def update_processed_list(self, filename: str, new_ids: List[str]):
         """
         Atualiza incrementalmente a lista de IDs ignorados (Histórico).
+        Lê do disco (ou cache), faz o append e salva de volta.
         """
         if not new_ids:
             return
 
         try:
+            # Carrega o SET atual
             current_ids = self.load_filter_set(filename)
+            
+            # Adiciona novos IDs
             updated_ids = current_ids.union({str(i).strip() for i in new_ids})
             
-            # Salva de forma ordenada para facilitar auditoria visual
+            # Atualiza Cache Imediatamente
+            self._cache[filename] = updated_ids
+            
+            # Salva no disco como LISTA ordenada
             self.save_data(filename, sorted(list(updated_ids)))
             
         except Exception as e:
@@ -148,11 +184,13 @@ class JsonRepository:
         # Normaliza a data para o nome do arquivo (YYYY-MM-DD ou DD_MM_YYYY)
         safe_date = date_ref.replace('/', '_').replace('-', '_')
         filename = f"faturamento_{safe_date}.json"
+        
+        # Usa o diretório de output definido na CONFIG, não o base_dir do repo
         path = CONFIG.OUTPUT_DIR / filename
         
         try:
             self._atomic_write(path, data)
-            logger.info(f"💾 Backup JSON consolidado: {path.name}")
+            logger.info(f"💾 Backup JSON consolidado salvo em: {path}")
         except Exception as e:
             logger.error(f"❌ Falha ao persistir faturamento refinado: {e}")
             raise e

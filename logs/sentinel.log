@@ -656,3 +656,50 @@
 2026-02-12 07:41:28 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado: faturamento_01_02_2026.json
 2026-02-12 07:41:28 | INFO     | [monitor_faturamento:_save_results] | 📝 7 novos IDs adicionados ao histórico de processados.
 2026-02-12 07:41:28 | INFO     | [monitor_faturamento:run_extraction] | 🏁 Finalizado em 93.73s. Total Extraído: 7. Ignorados: 1259
+2026-02-12 09:33:05 | INFO     | [monitor_faturamento:__init__] | 🔧 Inicializando Aplicação de Monitoria de Faturamento...
+2026-02-12 09:33:05 | WARNING  | [repositories:load_dict] | ⚠️ Arquivo vendedores.json é uma lista, retornando vazio em load_dict.
+2026-02-12 09:33:05 | INFO     | [monitor_faturamento:__init__] | 🛡️ Filtro de Bloqueio Ativo: 4215 IDs ignorados.
+2026-02-12 09:33:05 | INFO     | [monitor_faturamento:run_extraction] | 🚀 Iniciando Extração com Validação Cross-Check: 01/02/2026 até 12/02/2026
+2026-02-12 09:33:05 | INFO     | [monitor_faturamento:_fetch_nfe_map] | 🔎 Indexando Notas Fiscais (NFe) de 01/02/2026 a 12/02/2026...
+2026-02-12 09:33:38 | INFO     | [monitor_faturamento:__init__] | 🔧 Inicializando Aplicação de Monitoria de Faturamento...
+2026-02-12 09:33:38 | WARNING  | [repositories:load_dict] | ⚠️ Arquivo vendedores.json é uma lista, retornando vazio em load_dict.
+2026-02-12 09:33:38 | INFO     | [monitor_faturamento:__init__] | 🛡️ Filtro de Bloqueio Ativo: 502 IDs ignorados.
+2026-02-12 09:33:38 | INFO     | [monitor_faturamento:run_extraction] | 🚀 Iniciando Extração com Validação Cross-Check: 01/02/2026 até 12/02/2026
+2026-02-12 09:33:38 | INFO     | [monitor_faturamento:_fetch_nfe_map] | 🔎 Indexando Notas Fiscais (NFe) de 01/02/2026 a 12/02/2026...
+2026-02-12 09:33:45 | ERROR    | [omie_client:request] | 🌐 Falha Crítica de Conexão em ListarNF: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 09:33:45 | WARNING  | [monitor_faturamento:_fetch_nfe_map] | ⚠️ Falha na pág 1 de NFs: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 09:33:45 | INFO     | [monitor_faturamento:_fetch_nfe_map] | ✅ Indexação Fiscal Concluída: 0 vínculos encontrados.
+2026-02-12 09:33:52 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 1/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:33:57 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 2/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:01 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 3/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:05 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 4/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:10 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 5/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:10 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
+2026-02-12 09:34:13 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 6/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:16 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 7/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:21 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 8/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:24 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 9/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:27 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 10/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:27 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
+2026-02-12 09:34:30 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 11/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:33 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 12/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:36 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 13/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:39 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 14/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:44 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 15/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:44 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
+2026-02-12 09:34:47 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 16/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:51 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 17/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:54 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 18/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:34:59 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 19/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:35:04 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 20/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:35:04 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
+2026-02-12 09:35:08 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 21/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:35:12 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 22/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:35:16 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 23/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:35:21 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 24/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:35:26 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 25/26 | Capturados: 50 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:35:26 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
+2026-02-12 09:35:29 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 26/26 | Capturados: 45 | Ignorados: 0 | Divergentes: 0
+2026-02-12 09:35:29 | INFO     | [monitor_faturamento:_save_results] | 💾 Salvando dados (FINAL) no disco...
+2026-02-12 09:35:29 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
+2026-02-12 09:35:29 | INFO     | [monitor_faturamento:run_extraction] | 🏁 Finalizado em 111.44s. Sucesso: 1220. Divergentes: 0
