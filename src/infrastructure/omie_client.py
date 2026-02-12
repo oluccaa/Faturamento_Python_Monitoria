@@ -84,7 +84,7 @@ class OmieClient:
                 # Não logamos como erro se for apenas "Não existem registros", pois é comum em paginação final
                 if "não existem registros" in str(error_msg).lower():
                     logger.debug(f"ℹ️ Fim da paginação ou sem dados para {call}: {error_msg}")
-                    return {"total_de_paginas": 0, "registros": []} # Retorno seguro vazio
+                    return {"total_de_paginas": 0, "registros": [], "nfCadastro": []} # Retorno seguro vazio
                 
                 logger.error(f"⛔ Erro de Negócio Omie [{call}]: {error_msg}")
                 raise Exception(f"Omie API Logical Error: {error_msg}")
@@ -114,25 +114,44 @@ class OmieClient:
         """
         param = {
             "pagina": pagina,
-            "registros_por_pagina": 50, # Reduzi para 50 para evitar timeouts em payloads gigantes
+            "registros_por_pagina": 50,
             "apenas_importado_api": "N",
             "filtrar_por_data_de": data_de,
             "filtrar_por_data_ate": data_ate,
-            "apenas_resumo": "N" # Traz os ITENS (Crucial para a validação)
+            "apenas_resumo": "N"
         }
         return self.request(self.ENDPOINT_PEDIDOS, "ListarPedidos", param)
 
     def listar_nfs(self, pagina: int, data_de: str, data_ate: str) -> dict:
         """
         Executa a listagem de Notas Fiscais (NFe) no período.
-        CORRIGIDO: Parâmetros ajustados para o padrão 'ListarNF'.
         """
         param = {
-            "nPagina": pagina,            # Omie usa nPagina aqui
-            "nRegPorPagina": 50,          # Omie usa nRegPorPagina aqui
-            "apenas_importado_api": "N",  # Este costuma ser igual
-            "dEmiInicial": data_de,       # Filtro de data inicial
-            "dEmiFinal": data_ate,        # Filtro de data final
-            # Removido 'ordenar_por' pois nem sempre é respeitado ou necessário
+            "nPagina": pagina,
+            "nRegPorPagina": 50,
+            "apenas_importado_api": "N",
+            "dEmiInicial": data_de,
+            "dEmiFinal": data_ate,
         }
-        return self.request(self.ENDPOINT_NFE, "ListarNF", param)
+        return self.request(self.ENDPOINT_NFE, "ListarNFes", param)
+
+    def consultar_nfe_por_pedido(self, codigo_pedido: int) -> dict:
+        """
+        Busca a NFe especificamente ligada a um ID de Pedido de Venda.
+        Utilizado para enriquecer pedidos faturados que não trazem dados da NF na listagem de pedidos.
+        """
+        param = {
+            "nPagina": 1,
+            "nRegPorPagina": 1,
+            "apenas_importado_api": "N",
+            "nCodPed": codigo_pedido  # Filtro chave para vincular Pedido -> NF
+        }
+        
+        # O endpoint de consulta de NF usa a chamada ListarNFes
+        response = self.request(self.ENDPOINT_NFE, "ListarNFes", param)
+        
+        # Se houver retorno válido, pega o primeiro item da lista 'nfCadastro'
+        if response and "nfCadastro" in response and len(response["nfCadastro"]) > 0:
+            return response["nfCadastro"][0]
+            
+        return {}

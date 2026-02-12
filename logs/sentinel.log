@@ -703,3 +703,34 @@
 2026-02-12 09:35:29 | INFO     | [monitor_faturamento:_save_results] | 💾 Salvando dados (FINAL) no disco...
 2026-02-12 09:35:29 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
 2026-02-12 09:35:29 | INFO     | [monitor_faturamento:run_extraction] | 🏁 Finalizado em 111.44s. Sucesso: 1220. Divergentes: 0
+2026-02-12 10:08:40 | INFO     | [monitor_faturamento:__init__] | 🔧 Inicializando Aplicação de Monitoria de Faturamento...
+2026-02-12 10:08:40 | WARNING  | [repositories:load_dict] | ⚠️ Arquivo vendedores.json é uma lista, retornando vazio em load_dict.
+2026-02-12 10:08:40 | INFO     | [monitor_faturamento:__init__] | 🛡️ Filtro de Bloqueio Ativo: 1797 IDs ignorados.
+2026-02-12 10:08:40 | INFO     | [monitor_faturamento:run_extraction] | 🚀 Iniciando Processamento Híbrido: 01/02/2026 até 12/02/2026
+2026-02-12 10:08:40 | INFO     | [monitor_faturamento:_fetch_nfe_map] | 🔎 Indexando Cache de NFs (NFe) de 01/02/2026 a 12/02/2026...
+2026-02-12 10:08:45 | INFO     | [monitor_faturamento:__init__] | 🔧 Inicializando Aplicação de Monitoria de Faturamento...
+2026-02-12 10:08:45 | WARNING  | [repositories:load_dict] | ⚠️ Arquivo vendedores.json é uma lista, retornando vazio em load_dict.
+2026-02-12 10:08:45 | INFO     | [monitor_faturamento:__init__] | 🛡️ Filtro de Bloqueio Ativo: 1797 IDs ignorados.
+2026-02-12 10:08:45 | INFO     | [monitor_faturamento:run_extraction] | 🚀 Iniciando Processamento Híbrido: 01/02/2026 até 12/02/2026
+2026-02-12 10:08:45 | INFO     | [monitor_faturamento:_fetch_nfe_map] | 🔎 Indexando Cache de NFs (NFe) de 01/02/2026 a 12/02/2026...
+2026-02-12 10:08:51 | ERROR    | [omie_client:request] | 🌐 Falha Crítica de Conexão em ListarNFes: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 10:08:51 | ERROR    | [monitor_faturamento:_fetch_nfe_map] | ❌ Erro ao indexar NFs: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 10:08:51 | INFO     | [monitor_faturamento:_fetch_nfe_map] | ✅ Cache Fiscal Pronto: 0 notas vinculadas.
+2026-02-12 10:08:58 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 1/27 | Cache: 0 | API Extra: 0 | Total: 0
+2026-02-12 10:09:03 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 2/27 | Cache: 0 | API Extra: 0 | Total: 0
+2026-02-12 10:09:08 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 3/27 | Cache: 0 | API Extra: 0 | Total: 0
+2026-02-12 10:09:12 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 4/27 | Cache: 0 | API Extra: 0 | Total: 0
+2026-02-12 10:09:23 | ERROR    | [omie_client:request] | 🌐 Falha Crítica de Conexão em ListarNFes: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 10:09:23 | WARNING  | [monitor_faturamento:run_extraction] | ⚠️ Falha ao buscar NF individual 19190: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 10:09:29 | ERROR    | [omie_client:request] | 🌐 Falha Crítica de Conexão em ListarNFes: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 10:09:29 | WARNING  | [monitor_faturamento:run_extraction] | ⚠️ Falha ao buscar NF individual 19191: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 10:09:29 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 5/27 | Cache: 0 | API Extra: 0 | Total: 2
+2026-02-12 10:09:30 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
+2026-02-12 10:09:39 | ERROR    | [omie_client:request] | 🌐 Falha Crítica de Conexão em ListarNFes: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 10:09:39 | WARNING  | [monitor_faturamento:run_extraction] | ⚠️ Falha ao buscar NF individual 19310: HTTPSConnectionPool(host='app.omie.com.br', port=443): Max retries exceeded with url: /api/v1/produtos/nfconsultar/ (Caused by ResponseError('too many 500 error responses'))
+2026-02-12 10:09:39 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 6/27 | Cache: 0 | API Extra: 0 | Total: 4
+2026-02-12 10:09:42 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 7/27 | Cache: 0 | API Extra: 0 | Total: 5
+2026-02-12 10:09:47 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 8/27 | Cache: 0 | API Extra: 0 | Total: 5
+2026-02-12 10:09:51 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 9/27 | Cache: 0 | API Extra: 0 | Total: 5
+2026-02-12 10:09:56 | INFO     | [monitor_faturamento:run_extraction] | 📄 Pág 10/27 | Cache: 0 | API Extra: 0 | Total: 5
+2026-02-12 10:09:56 | INFO     | [repositories:save_refined_json] | 💾 Backup JSON consolidado salvo em: C:\Users\nathan.silva\Desktop\Faturamento_Python_Monitoria\data\processed_billing\faturamento_01_02_2026.json
